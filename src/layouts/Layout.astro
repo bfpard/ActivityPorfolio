@@ -1,3 +1,9 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,10 +12,22 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Kimberly Portafolio</title>
 	</head>
-	<body>
-		<slot />
+	<body class="relative min-h-screen">
+		<div
+			aria-hidden="true"
+			class="pointer-events-none fixed inset-0 z-0 bg-[url('/images/about.webp')] bg-[length:420px_420px] bg-repeat opacity-[0.28]"
+		></div>
+		<div
+			aria-hidden="true"
+			class="pointer-events-none fixed inset-0 z-0 bg-gradient-to-br from-[#D4E5F8]/60 via-[#D4E5F8]/55 to-[#F1E4D5]/65"
+		></div>
+		<Header />
+		<main class="relative z-10 pt-24">
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
 
@@ -19,5 +37,6 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		background-color: #D4E5F8;
 	}
 </style>

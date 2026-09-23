@@ -1,0 +1,411 @@
+---
+const navigation = [
+  {
+    label: 'Acerca de mí',
+    href: '/',
+  },
+  {
+    label: 'Maestros, infancias y contextos',
+    href: '/#',
+    children: [
+      {
+        label: 'Fase 2: Exploración del territorio',
+        href: '/cursos/maestros-infancias-contextos/fase2',
+      },
+      {
+        label: 'Actividad 2',
+        href: '/materias/maestros-infancias-contextos/actividades/actividad-02',
+      },
+    ],
+  },
+  {
+    label: 'Maestro innovador reflexivo',
+    href: '/#',
+    children: [
+      {
+        label: 'Actividad 1',
+        href: '/materias/maestro-innovador-reflexivo/actividades/actividad-01',
+      },
+      {
+        label: 'Actividad 2',
+        href: '/materias/maestro-innovador-reflexivo/actividades/actividad-02',
+      },
+    ],
+  },
+  {
+    label: 'Maestro investigador reflexivo',
+    href: '/#',
+    children: [
+      {
+        label: 'Actividad 1',
+        href: '/materias/maestro-investigador-reflexivo/actividades/actividad-01',
+      },
+      {
+        label: 'Actividad 2',
+        href: '/materias/maestro-investigador-reflexivo/actividades/actividad-02',
+      },
+    ],
+  },
+  {
+    label: 'Maestro investigador transformativo',
+    href: '/#',
+    children: [
+      {
+        label: 'Actividad 1',
+        href: '/materias/maestro-investigador-transformativo/actividades/actividad-01',
+      },
+      {
+        label: 'Actividad 2',
+        href: '/materias/maestro-investigador-transformativo/actividades/actividad-02',
+      },
+    ],
+  },
+  {
+    label: 'Cátedra de infancias',
+    href: '/#',
+    children: [
+      {
+        label: 'Actividad 1',
+        href: '/materias/catedra-de-infancias/actividades/actividad-01',
+      },
+      {
+        label: 'Actividad 2',
+        href: '/materias/catedra-de-infancias/actividades/actividad-02',
+      },
+    ],
+  },
+];
+---
+
+<header class="fixed inset-x-4 top-4 z-30 rounded-2xl bg-[#6278FF] shadow-sm">
+
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-2xl"
+  >
+    <img
+      src="/images/orquidea.webp"
+      alt=""
+      class="absolute -left-8 -top-14 w-32 -rotate-12 opacity-80"
+    />
+    <img
+      src="/images/orquidea.webp"
+      alt=""
+      class="absolute -bottom-16 -left-8 w-28 rotate-180 opacity-75"
+    />
+  </div>
+
+  <!-- ========================= -->
+  <!-- DESKTOP NAVIGATION -->
+  <!-- ========================= -->
+
+  <nav class="relative z-10 mx-auto hidden max-w-7xl items-center justify-between px-6 py-4 pl-28 lg:flex">
+
+    <ul class="flex items-center gap-3">
+
+      {
+        navigation.map((item) => (
+          <li class="group relative">
+
+            {
+              item.children ? (
+                <button
+                  type="button"
+                  class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white/15"
+                  aria-expanded="false"
+                >
+                  {item.label}
+
+                  <svg
+                    class="h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </button>
+              ) : (
+                <a
+                  href={item.href}
+                  class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white/15"
+                >
+                  {item.label}
+                </a>
+              )
+            }
+
+            <!-- Desktop submenu -->
+            {item.children && (
+              <ul
+                class="invisible absolute right-0 top-full z-50 mt-3 w-64 rounded-lg border border-gray-200 bg-white py-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100"
+              >
+                {item.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.href}
+                      class="block px-4 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-100 hover:text-blue-600"
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+          </li>
+        ))
+      }
+
+    </ul>
+
+  </nav>
+
+
+  <!-- ========================= -->
+  <!-- MOBILE / TABLET HEADER -->
+  <!-- ========================= -->
+
+  <nav class="relative z-10 flex items-center justify-between px-4 py-4 pl-24 lg:hidden">
+
+    <!-- Logo -->
+    <a
+      href="/"
+      class="text-xl font-bold text-white"
+    >
+      Kimberly Daza Contreras
+    </a>
+
+    <!-- Menu button -->
+    <button
+      id="menu-button"
+      type="button"
+      class="rounded-lg p-2 text-white transition-colors hover:bg-white/15"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg
+        class="h-7 w-7"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
+
+  </nav>
+
+
+  <!-- ========================= -->
+  <!-- OVERLAY -->
+  <!-- ========================= -->
+
+  <div
+    id="menu-overlay"
+    class="fixed inset-0 z-40 hidden bg-black/40"
+  ></div>
+
+
+  <!-- ========================= -->
+  <!-- MOBILE SIDEBAR -->
+  <!-- ========================= -->
+
+  <aside
+    id="mobile-menu"
+    class="fixed right-0 top-0 z-50 h-full w-80 max-w-[85vw] translate-x-full overflow-y-auto bg-white shadow-xl transition-transform duration-300"
+    aria-hidden="true"
+  >
+
+    <!-- Sidebar header -->
+    <div class="flex items-center justify-between border-b border-gray-200 px-5 py-4">
+
+      <span class="text-lg font-bold text-gray-900">
+        Menú
+      </span>
+
+      <!-- Close button -->
+      <button
+        id="close-menu"
+        type="button"
+        class="rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-100"
+        aria-label="Cerrar menú"
+      >
+        <svg
+          class="h-6 w-6"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+    </div>
+
+
+    <!-- Mobile navigation -->
+    <nav class="px-4 py-5">
+
+      <ul class="space-y-2">
+
+        {
+          navigation.map((item, index) => (
+            <li>
+
+              {
+                item.children ? (
+                  <>
+                    <!-- Materia: texto + icono = un solo botón -->
+                    <button
+                      type="button"
+                      class="submenu-toggle flex w-full items-center justify-between rounded-lg px-3 py-3 text-left text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-blue-600"
+                      aria-expanded="false"
+                      aria-controls={`submenu-${index}`}
+                    >
+                      <span>{item.label}</span>
+
+                      <svg
+                        class="h-4 w-4 shrink-0 transition-transform duration-200"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        />
+                      </svg>
+                    </button>
+
+                    <!-- Mobile submenu -->
+                    <ul
+                      id={`submenu-${index}`}
+                      class="hidden space-y-1 border-l-2 border-gray-200 pl-4"
+                    >
+                      {item.children.map((child) => (
+                        <li>
+                          <a
+                            href={child.href}
+                            class="block rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-blue-600"
+                          >
+                            {child.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <a
+                    href={item.href}
+                    class="block rounded-lg px-3 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-blue-600"
+                  >
+                    {item.label}
+                  </a>
+                )
+              }
+
+            </li>
+          ))
+        }
+
+      </ul>
+
+    </nav>
+
+  </aside>
+
+</header>
+
+
+<!-- ========================= -->
+<!-- MENU JAVASCRIPT -->
+<!-- ========================= -->
+
+<script>
+  const menuButton = document.querySelector('#menu-button');
+  const closeButton = document.querySelector('#close-menu');
+  const mobileMenu = document.querySelector('#mobile-menu');
+  const overlay = document.querySelector('#menu-overlay');
+
+  const openMenu = () => {
+    mobileMenu?.classList.remove('translate-x-full');
+    overlay?.classList.remove('hidden');
+
+    mobileMenu?.setAttribute('aria-hidden', 'false');
+    menuButton?.setAttribute('aria-expanded', 'true');
+
+    document.body.classList.add('overflow-hidden');
+  };
+
+  const closeMenu = () => {
+    mobileMenu?.classList.add('translate-x-full');
+    overlay?.classList.add('hidden');
+
+    mobileMenu?.setAttribute('aria-hidden', 'true');
+    menuButton?.setAttribute('aria-expanded', 'false');
+
+    document.body.classList.remove('overflow-hidden');
+  };
+
+  menuButton?.addEventListener('click', openMenu);
+  closeButton?.addEventListener('click', closeMenu);
+  overlay?.addEventListener('click', closeMenu);
+
+
+  /*
+   * Mobile / Tablet submenus
+   *
+   * Ahora TODO el botón de la materia es clickeable:
+   * - texto
+   * - espacio del botón
+   * - icono
+   */
+  document.querySelectorAll('.submenu-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const submenuId = button.getAttribute('aria-controls');
+
+      if (!submenuId) return;
+
+      const submenu = document.getElementById(submenuId);
+
+      if (!submenu) return;
+
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+      button.setAttribute('aria-expanded', String(!isOpen));
+
+      submenu.classList.toggle('hidden', isOpen);
+
+      const icon = button.querySelector('svg');
+
+      icon?.classList.toggle('rotate-180', !isOpen);
+    });
+  });
+</script>
