@@ -6,12 +6,31 @@ const activity = {
         "Resumen consolidado de las actividades realizadas, los resultados obtenidos y las evidencias recopiladas durante el desarrollo de la actividad.",
 
     evidence: {
-        image: {
+        socialCartography: {
             title: "Cartografía Social",
             description:
                 "Registro visual de la actividad realizada durante la jornada.",
             src: "/ActivityPorfolio/images/cartografia.webp",
             alt: "Evidencia fotográfica de la actividad",
+        },
+
+        groupCartography: {
+            title: "Cartografía Grupal",
+            description:
+                "Socialización de cartografías individuales.",
+            src: "/ActivityPorfolio/images/cartogrupal.webp",
+            alt: "Cartografías grupales",
+        },
+
+        problematic: {
+            title: "Problemática",
+            description:
+                "La problemática que se evidencia en la Institución Educativa Nuestra Señora de Belén" + 
+                ' está relacionada con la falta de herramientas pedagógicas y de acompañamiento especializado' + 
+                ' para los niños y niñas con Planes Individuales de Ajustes Razonables (PIAR). La tensión principal' +
+                ' surge de la ausencia de una docente encargada de apoyar estos procesos, lo que genera un vacío entre' +
+                ' las necesidades educativas particulares de los estudiantes y la capacidad institucional para responder de' + 
+                ' manera adecuada. Esta situación afecta directamente a los niños con PIAR, pero también repercute en sus familias y en los docentes que, sin contar con los recursos ni la formación suficiente, deben improvisar estrategias para atender la diversidad en el aula. La tensión se origina por la carencia de personal especializado y de materiales adaptados, lo que limita la inclusión real y la equidad en el aprendizaje. En la primera infancia, esta problemática se traduce en barreras para el desarrollo integral, pues los niños no logran acceder a experiencias educativas ajustadas a sus ritmos y estilos de aprendizaje, lo que puede impactar su autoestima, su motivación y sus oportunidades de socialización. En consecuencia, la falta de apoyo especializado no solo restringe el derecho a una educación inclusiva, sino que también profundiza las desigualdades dentro del contexto escolar.',
         },
 
         video: {
@@ -116,7 +135,7 @@ const tableData = {
         <!-- EVIDENCE -->
         <!-- ========================= -->
 
-        <section>
+        <section class="mb-12">
             <div class="mb-6">
                 <h2
                     class="text-2xl font-bold tracking-tight text-[#0C2340] sm:text-3xl"
@@ -141,18 +160,69 @@ const tableData = {
                 >
                     <div class="mb-4">
                         <h3 class="text-xl font-semibold text-[#0C2340]">
-                            {activity.evidence.image.title}
+                            {activity.evidence.groupCartography.title}
                         </h3>
 
                         <p class="mt-1 text-sm leading-6 text-gray-600">
-                            {activity.evidence.image.description}
+                            {activity.evidence.groupCartography.description}
                         </p>
                     </div>
 
                     <div class="overflow-hidden rounded-lg bg-gray-100">
                         <img
-                            src={activity.evidence.image.src}
-                            alt={activity.evidence.image.alt}
+                            src={activity.evidence.groupCartography.src}
+                            alt={activity.evidence.groupCartography.alt}
+                            class="h-[25rem] w-full object-cover object-top"
+                            loading="lazy"
+                        />
+                    </div>
+                </article>
+
+                <!-- ========================= -->
+                <!-- PROBLEMATIC -->
+                <!-- ========================= -->
+
+                <article
+                    class="overflow-hidden rounded-xl border border-gray-100 bg-white p-5 shadow-sm"
+                >
+                    <div class="mb-4">
+                        <h3 class="text-xl font-semibold text-[#0C2340]">
+                            {activity.evidence.problematic.title}
+                        </h3>
+
+                        <p class="mt-1 text-sm leading-6 text-gray-600">
+                            {activity.evidence.problematic.description}
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section>
+
+            <!-- Evidence grid -->
+            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                <!-- ========================= -->
+                <!-- IMAGE -->
+                <!-- ========================= -->
+
+                <article
+                    class="overflow-hidden rounded-xl border border-gray-100 bg-white p-5 shadow-sm"
+                >
+                    <div class="mb-4">
+                        <h3 class="text-xl font-semibold text-[#0C2340]">
+                            {activity.evidence.socialCartography.title}
+                        </h3>
+
+                        <p class="mt-1 text-sm leading-6 text-gray-600">
+                            {activity.evidence.socialCartography.description}
+                        </p>
+                    </div>
+
+                    <div class="overflow-hidden rounded-lg bg-gray-100">
+                        <img
+                            src={activity.evidence.socialCartography.src}
+                            alt={activity.evidence.socialCartography.alt}
                             class="h-[25rem] w-full object-cover object-top"
                             loading="lazy"
                         />
