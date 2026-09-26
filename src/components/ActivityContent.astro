@@ -52,18 +52,18 @@ const activity = {
  */
 const tableData = {
     columns: [
-        "Actividad / Fase",
-        "Responsable",
-        "Período",
-        "Meta alcanzada",
-        "Estado",
+        "Actividad",
+        "Enlace",
     ],
 
     rows: [
-        ["Actividad 1", "Responsable 1", "Enero 10", "100%", "Completado"],
-        ["Actividad 2", "Responsable 2", "Enero 15", "92%", "En proceso"],
-        ["Actividad 3", "Responsable 3", "Enero 18", "100%", "Completado"],
-        ["Actividad 4", "Responsable 4", "Enero 22", "98%", "Completado"],
+        [
+            "Diario de campo",
+            {
+                label: "Abrir documento",
+                href: "https://unadvirtualedu-my.sharepoint.com/:w:/g/personal/kdazaco_unadvirtual_edu_co/IQDgi1G6dD0_RZQyvHv6c_zPAT0HG-RZM-1f-dZkeSVbZQs?e=OQO6zv",
+            },
+        ],
     ],
 };
 ---
@@ -120,7 +120,18 @@ const tableData = {
                                 <tr class="transition-colors hover:bg-gray-50">
                                     {row.map((cell) => (
                                         <td class="px-5 py-4 text-sm text-gray-700">
-                                            {cell}
+                                            {typeof cell === "string" ? (
+                                                cell
+                                            ) : (
+                                                <a
+                                                    href={cell.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-900"
+                                                >
+                                                    {cell.label}
+                                                </a>
+                                            )}
                                         </td>
                                     ))}
                                 </tr>
