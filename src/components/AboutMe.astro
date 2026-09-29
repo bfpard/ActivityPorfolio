@@ -1,45 +1,39 @@
 ---
 const profile = {
-  badge: 'UNAD • 2026',
-  reference: 'Fusagasugá, Cundinamarca',
-  name: 'Kimberly Daza',
-  career: 'Docente',
+  badge: "UNAD • 2026",
+  reference: "Fusagasugá, Cundinamarca",
+  name: "Kimberly Daza",
+  career: "Docente",
 
   description: [
-    'Mi nombre es Kimberly Daza Contreras, soy docente de primera infancia y estudiante universitaria en el área de educación.',
+    "Mi nombre es Kimberly Daza Contreras, soy docente de primera infancia y estudiante universitaria en el área de educación.",
 
-    'Me desempeño como profesora en preescolar y primaria, tengo 31 años y pertenezco a la zona ZCBC- CEAD Fusagasugá.',
+    "Me desempeño como profesora en preescolar y primaria, tengo 31 años y pertenezco a la zona ZCBC- CEAD Fusagasugá.",
   ],
 
-  image: '/ActivityPorfolio/images/photo.webp',
+  image: "/ActivityPorfolio/images/photo.webp",
 
   card: {
-    name: 'Kimberly Daza Contreras',
-    semester: 'MAESTROS, INFANCIAS Y CONTEXTOS',
-    university: 'Universidad Nacional Abierta y a Distancia',
-    focus: 'Licenciatura en educación infantil',
-    id: '502707683A_2204',
+    name: "Kimberly Daza Contreras",
+    semester: "MAESTROS, INFANCIAS Y CONTEXTOS",
+    university: "Universidad Nacional Abierta y a Distancia",
+    focus: "Licenciatura en educación infantil",
+    id: "502707683A_2204",
   },
 };
 ---
 
-<section
-  id="about-me"
-  class="w-full px-4 py-12 sm:px-6 lg:px-8 lg:py-20"
->
+<section id="about-me" class="w-full px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
   <div
     class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16"
   >
-
     <!-- ========================= -->
     <!-- LEFT: INFORMATION -->
     <!-- ========================= -->
 
     <div class="flex flex-col justify-center">
-
       <!-- Header -->
       <div class="mb-6">
-
         <div class="mb-4 flex items-center gap-3">
           <span
             class="rounded-full bg-[#F1E4D5] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.15em] text-[#A64B2A]"
@@ -60,44 +54,41 @@ const profile = {
           {profile.name}
         </h1>
 
-        <p
-          class="mt-3 font-serif text-sm italic text-[#A64B2A] sm:text-base"
-        >
+        <p class="mt-3 font-serif text-sm italic text-[#A64B2A] sm:text-base">
           {profile.career}
         </p>
-
       </div>
 
-
       <!-- Description -->
-      <div class="max-w-2xl space-y-5 text-sm leading-7 text-gray-700 sm:text-base">
-
+      <div
+        class="max-w-2xl space-y-5 text-sm leading-7 text-gray-700 sm:text-base"
+      >
         {
           profile.description.map((paragraph, index) => (
-            <p class={index === 0 ? 'first-letter:float-left first-letter:mr-2 first-letter:font-serif first-letter:text-5xl first-letter:leading-[0.8] first-letter:text-gray-950' : ''}>
+            <p
+              class={
+                index === 0
+                  ? "first-letter:float-left first-letter:mr-2 first-letter:font-serif first-letter:text-5xl first-letter:leading-[0.8] first-letter:text-gray-950"
+                  : ""
+              }
+            >
               {paragraph}
             </p>
           ))
         }
-
       </div>
-
     </div>
-
 
     <!-- ========================= -->
     <!-- RIGHT: PROFILE CARD -->
     <!-- ========================= -->
 
     <div class="flex justify-center lg:justify-end">
-
       <article
         class="w-full max-w-md overflow-hidden rounded-xl border border-white bg-white p-1.5 shadow-lg"
       >
-
         <!-- Image -->
         <div class="relative overflow-hidden rounded-lg">
-
           <img
             src={profile.image}
             alt={`Fotografía de ${profile.name}`}
@@ -110,15 +101,11 @@ const profile = {
           >
             Kim
           </span>
-
         </div>
-
 
         <!-- Card information -->
         <div class="px-2 pb-3 pt-3">
-
           <div class="flex items-start justify-between gap-4">
-
             <h2 class="font-serif text-sm font-semibold text-gray-950">
               {profile.card.name}
             </h2>
@@ -128,38 +115,35 @@ const profile = {
             >
               {profile.card.semester}
             </span>
-
           </div>
-
 
           <p class="mt-1 text-[9px] leading-4 text-gray-600">
             {profile.card.university}
           </p>
 
-
           <div
             class="mt-4 flex items-center justify-between border-t border-gray-100 pt-2"
           >
-
             <span
               class="text-[8px] font-medium uppercase tracking-[0.1em] text-[#A64B2A]"
             >
               {profile.card.focus}
             </span>
 
-            <span
-              class="text-[8px] tracking-[0.08em] text-gray-500"
-            >
+            <span class="text-[8px] tracking-[0.08em] text-gray-500">
               {profile.card.id}
             </span>
-
           </div>
-
         </div>
-
       </article>
-
     </div>
-
   </div>
 </section>
+
+<a
+  href="/ActivityPorfolio/vocales"
+  target="_self"
+  class="absolute bottom-0 right-0 mb-4 mr-4 rounded-lg bg-[#A64B2A] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-white transition-colors duration-200 hover:bg-[#8C3D24]"
+>
+  JUEGO DE VOCALES
+</a>

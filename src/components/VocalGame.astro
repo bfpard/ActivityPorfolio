@@ -1,0 +1,905 @@
+---
+import { LEVELS, VOCALS } from "../data/vocalGame";
+---
+
+<div class="vocal-game" id="vocal-game">
+    <!-- HEADER -->
+    <header class="game-header">
+        <div>
+            <span class="game-label">APRENDAMOS</span>
+            <h1>Las vocales</h1>
+        </div>
+
+        <div class="level-indicator">
+            <span>Nivel</span>
+            <strong id="level-number">1</strong>
+            <span>/ 7</span>
+        </div>
+    </header>
+
+    <!-- TABLERO -->
+    <main class="game-board" id="game-board">
+        <!-- Decoración del salón -->
+        <div class="classroom-board">
+            <span>⭐ ¡Aprendamos juntos! ⭐</span>
+        </div>
+
+        <div class="window window-left"></div>
+        <div class="window window-right"></div>
+
+        <div class="desk desk-one"></div>
+        <div class="desk desk-two"></div>
+
+        <!-- SVG PARA LAS LÍNEAS -->
+        <svg
+            id="game-lines"
+            class="game-lines"
+            viewBox="0 0 1000 600"
+            preserveAspectRatio="none"
+        >
+        </svg>
+
+        <!-- VOCAL CONTAINER -->
+        <div id="vocals-container"></div>
+
+        <!-- MENSAJE DE AYUDA -->
+        <div id="hint" class="hint" aria-live="polite">
+            Busca la vocal <strong id="hint-vocal">A</strong>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="game-footer">
+        <div class="progress">
+            <span id="progress-text">0 de 5</span>
+
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL NIVEL COMPLETADO -->
+    <div id="level-complete" class="game-modal hidden">
+        <div class="modal-card">
+            <div class="success-icon">🎉</div>
+
+            <h2>¡Muy bien!</h2>
+
+            <p>Completaste todas las vocales correctamente.</p>
+
+            <div id="completed-level">Nivel 1 completado</div>
+
+            <button id="next-level"> Siguiente nivel → </button>
+        </div>
+    </div>
+
+    <!-- MODAL FINAL -->
+    <div id="game-complete" class="game-modal hidden">
+        <div class="modal-card">
+            <div class="success-icon">🏆</div>
+
+            <h2>¡Lo lograste!</h2>
+
+            <p>Terminaste todos los retos de las vocales.</p>
+
+            <p class="final-message">
+                ¡Eres un gran explorador de las vocales!
+            </p>
+
+            <button id="restart-game"> Jugar nuevamente </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const VOCALS = ["A", "E", "I", "O", "U"];
+    const TOTAL_LEVELS = 7;
+
+    let currentLevel = 1;
+    let currentIndex = 0;
+
+    let positions = {};
+    let completed = [];
+
+    const board = document.querySelector("#game-board");
+    const container = document.querySelector("#vocals-container");
+    const svg = document.querySelector("#game-lines");
+
+    const levelNumber = document.querySelector("#level-number");
+    const progressText = document.querySelector("#progress-text");
+    const progressFill = document.querySelector("#progress-fill");
+
+    const hint = document.querySelector("#hint");
+    const hintVocal = document.querySelector("#hint-vocal");
+
+    const levelComplete = document.querySelector("#level-complete");
+    const gameComplete = document.querySelector("#game-complete");
+
+    const nextLevelButton = document.querySelector("#next-level");
+    const restartButton = document.querySelector("#restart-game");
+
+    /*
+     * Genera posiciones aleatorias.
+     * Las coordenadas están expresadas en el mismo sistema
+     * que utiliza el SVG: 1000 x 600.
+     */
+    const generatePositions = () => {
+        const result = {};
+
+        VOCALS.forEach((vocal) => {
+            let position;
+
+            do {
+                position = {
+                    x: random(100, 900),
+                    y: random(150, 520),
+                };
+            } while (
+                Object.values(result).some(
+                    (item) => distance(item, position) < 160,
+                )
+            );
+
+            result[vocal] = position;
+        });
+
+        return result;
+    };
+
+    const random = (min, max) =>
+        Math.floor(Math.random() * (max - min + 1)) + min;
+
+    const distance = (a, b) =>
+        Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+
+    /*
+     * Crea las vocales.
+     */
+    const renderVocals = () => {
+        container.innerHTML = "";
+
+        VOCALS.forEach((vocal) => {
+            const { x, y } = positions[vocal];
+
+            const element = document.createElement("button");
+
+            element.className = "vocal";
+            element.dataset.vocal = vocal;
+
+            element.style.left = `${x / 10}%`;
+            element.style.top = `${y / 6}%`;
+
+            element.innerHTML = `
+        <span>${vocal}</span>
+      `;
+
+            element.addEventListener("click", () =>
+                handleVocalClick(vocal, element),
+            );
+
+            container.appendChild(element);
+        });
+    };
+
+    /*
+     * Maneja la selección del niño.
+     */
+    const handleVocalClick = (vocal, element) => {
+        const expected = VOCALS[currentIndex];
+
+        if (vocal === expected) {
+            correctVocal(element);
+
+            currentIndex++;
+
+            updateProgress();
+
+            if (currentIndex > 0) {
+                drawLine();
+            }
+
+            if (currentIndex === VOCALS.length) {
+                completeLevel();
+            }
+
+            return;
+        }
+
+        wrongVocal(element);
+        showHint(expected);
+    };
+
+    /*
+     * Vocal correcta.
+     */
+    const correctVocal = (element) => {
+        element.classList.add("correct");
+        element.disabled = true;
+
+        completed.push(element);
+
+        element.querySelector("span").textContent = "✓";
+
+        setTimeout(() => {
+            element.classList.add("completed");
+        }, 150);
+    };
+
+    /*
+     * Vocal incorrecta.
+     */
+    const wrongVocal = (element) => {
+        element.classList.remove("wrong");
+
+        // Fuerza a reiniciar la animación
+        void element.offsetWidth;
+
+        element.classList.add("wrong");
+
+        setTimeout(() => {
+            element.classList.remove("wrong");
+        }, 500);
+    };
+
+    /*
+     * Muestra la pista.
+     */
+    const showHint = (expected) => {
+        hintVocal.textContent = expected;
+
+        hint.classList.remove("show");
+
+        void hint.offsetWidth;
+
+        hint.classList.add("show");
+
+        const correctElement = document.querySelector(
+            `[data-vocal="${expected}"]`,
+        );
+
+        correctElement?.classList.add("hint-vocal");
+
+        setTimeout(() => {
+            correctElement?.classList.remove("hint-vocal");
+        }, 1400);
+    };
+
+    /*
+     * Dibuja una línea entre las dos últimas
+     * vocales seleccionadas correctamente.
+     */
+    const drawLine = () => {
+        if (currentIndex < 2) return;
+
+        const previous = VOCALS[currentIndex - 2];
+        const current = VOCALS[currentIndex - 1];
+
+        const start = positions[previous];
+        const end = positions[current];
+
+        const line = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line",
+        );
+
+        line.setAttribute("x1", start.x.toString());
+
+        line.setAttribute("y1", start.y.toString());
+
+        line.setAttribute("x2", end.x.toString());
+
+        line.setAttribute("y2", end.y.toString());
+
+        line.classList.add("game-line");
+
+        svg.appendChild(line);
+    };
+
+    /*
+     * Actualiza el progreso.
+     */
+    const updateProgress = () => {
+        progressText.textContent = `${currentIndex} de 5`;
+
+        progressFill.style.width = `${currentIndex * 20}%`;
+    };
+
+    /*
+     * Nivel completado.
+     */
+    const completeLevel = () => {
+        setTimeout(() => {
+            document.querySelector("#completed-level").textContent =
+                `Nivel ${currentLevel} completado`;
+
+            levelComplete.classList.remove("hidden");
+        }, 700);
+    };
+
+    /*
+     * Siguiente nivel.
+     */
+    nextLevelButton?.addEventListener("click", () => {
+        if (currentLevel >= TOTAL_LEVELS) {
+            levelComplete.classList.add("hidden");
+            gameComplete.classList.remove("hidden");
+
+            return;
+        }
+
+        currentLevel++;
+
+        levelComplete.classList.add("hidden");
+
+        startLevel();
+    });
+
+    /*
+     * Reiniciar todo el juego.
+     */
+    restartButton?.addEventListener("click", () => {
+        currentLevel = 1;
+
+        gameComplete.classList.add("hidden");
+
+        startLevel();
+    });
+
+    /*
+     * Inicializa un nivel.
+     */
+    const startLevel = () => {
+        currentIndex = 0;
+        completed = [];
+
+        positions = generatePositions();
+
+        svg.innerHTML = "";
+
+        levelNumber.textContent = currentLevel.toString();
+
+        updateProgress();
+
+        hintVocal.textContent = "A";
+
+        renderVocals();
+
+        showHint("A");
+    };
+
+    startLevel();
+</script>
+
+<style>
+    .vocal-game {
+        position: relative;
+
+        width: min(100%, 1200px);
+        height: min(calc(100dvh - 24px), 900px);
+
+        margin: 12px auto;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+
+        border-radius: 24px;
+
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+        font-family: Arial, sans-serif;
+
+        background: #dff4ff;
+    }
+
+    /* HEADER */
+
+    .game-header {
+        height: 90px;
+        padding: 16px 28px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background: #3157a4;
+        color: white;
+
+        position: relative;
+        z-index: 20;
+    }
+
+    .game-label {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        opacity: 0.8;
+    }
+
+    .game-header h1 {
+        margin: 2px 0 0;
+        font-size: clamp(24px, 4vw, 38px);
+        font-weight: 800;
+    }
+
+    .level-indicator {
+        display: flex;
+        align-items: baseline;
+        gap: 5px;
+        font-size: 18px;
+    }
+
+    .level-indicator strong {
+        font-size: 32px;
+    }
+
+    /* BOARD */
+
+    .game-board {
+        position: relative;
+
+        flex: 1;
+        min-height: 0;
+
+        width: 100%;
+
+        overflow: hidden;
+
+        background: linear-gradient(#9ed8f5 0 55%, #dca66c 55% 100%);
+    }
+
+    /* PIZARRA */
+
+    .classroom-board {
+        position: absolute;
+
+        top: 3%;
+        left: 28%;
+
+        width: 44%;
+        height: 17%;
+
+        background: #285a42;
+
+        border: 10px solid #8b572a;
+        border-radius: 8px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: white;
+        font-size: clamp(12px, 2vw, 25px);
+
+        box-shadow:
+            inset 0 0 25px rgba(0, 0, 0, 0.25),
+            0 8px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    /* WINDOWS */
+
+    .window {
+        position: absolute;
+
+        top: 6%;
+
+        width: 12%;
+        height: 20%;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent 48%,
+                #fff 49% 51%,
+                transparent 52%
+            ),
+            linear-gradient(transparent 48%, #fff 49% 51%, transparent 52%),
+            #8bd6ff;
+
+        border: 8px solid #fff;
+
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .window-left {
+        left: 4%;
+    }
+
+    .window-right {
+        right: 4%;
+    }
+
+    /* DESKS */
+
+    .desk {
+        position: absolute;
+
+        bottom: 2%;
+
+        width: 18%;
+        height: 12%;
+
+        background: #9a5c30;
+
+        border-radius: 15px 15px 5px 5px;
+
+        box-shadow: 0 10px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .desk-one {
+        left: 5%;
+    }
+
+    .desk-two {
+        right: 5%;
+    }
+
+    /* SVG */
+
+    .game-lines {
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        z-index: 5;
+
+        pointer-events: none;
+    }
+
+    :global(.game-line) {
+        stroke: #f4b400;
+        stroke-width: 9;
+        stroke-linecap: round;
+
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+
+        animation: draw-line 0.6s ease forwards;
+
+        filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.2));
+    }
+
+    @keyframes draw-line {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    /* VOCALES */
+
+    #vocals-container {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+    }
+
+    :global(.vocal) {
+        position: absolute;
+
+        transform: translate(-50%, -50%);
+
+        width: clamp(55px, 8vw, 95px);
+        aspect-ratio: 1;
+
+        border: 7px solid white;
+        border-radius: 50%;
+
+        background: #ffcc33;
+
+        color: #333;
+
+        font-size: clamp(28px, 5vw, 55px);
+        font-weight: 900;
+
+        cursor: pointer;
+
+        display: grid;
+        place-items: center;
+
+        box-shadow: 0 8px 0 rgba(0, 0, 0, 0.15);
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    :global(.vocal:hover) {
+        transform: translate(-50%, -50%) scale(1.12);
+    }
+
+    :global(.vocal.correct) {
+        background: #4caf50;
+        color: white;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+
+    :global(.vocal.completed) {
+        box-shadow:
+            0 0 0 8px rgba(76, 175, 80, 0.25),
+            0 8px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    /* ERROR */
+
+    :global(.vocal.wrong) {
+        animation: shake 0.45s ease;
+        background: #ef5350;
+        color: white;
+    }
+
+    @keyframes shake {
+        0%,
+        100% {
+            transform: translate(-50%, -50%);
+        }
+
+        25% {
+            transform: translate(calc(-50% - 10px), -50%);
+        }
+
+        50% {
+            transform: translate(calc(-50% + 10px), -50%);
+        }
+
+        75% {
+            transform: translate(calc(-50% - 6px), -50%);
+        }
+    }
+
+    /* PISTA */
+
+    .hint-vocal {
+        animation: hint-pulse 0.7s ease infinite;
+    }
+
+    @keyframes hint-pulse {
+        0%,
+        100% {
+            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        50% {
+            box-shadow:
+                0 0 0 15px rgba(255, 193, 7, 0.45),
+                0 8px 0 rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    .hint {
+        position: absolute;
+
+        left: 50%;
+        bottom: 5%;
+
+        transform: translateX(-50%) translateY(30px);
+
+        padding: 10px 20px;
+
+        border-radius: 999px;
+
+        background: white;
+
+        color: #3157a4;
+
+        font-size: clamp(12px, 2vw, 20px);
+        font-weight: 700;
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        z-index: 30;
+    }
+
+    .hint.show {
+        animation: hint-message 2s ease;
+    }
+
+    @keyframes hint-message {
+        0% {
+            opacity: 0;
+            transform: translateX(-50%) translateY(30px);
+        }
+
+        20%,
+        80% {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-10px);
+        }
+    }
+
+    /* FOOTER */
+
+    .game-footer {
+        padding: 15px 28px;
+
+        background: white;
+    }
+
+    .progress {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .progress-bar {
+        flex: 1;
+
+        height: 12px;
+
+        background: #e5e7eb;
+
+        border-radius: 999px;
+
+        overflow: hidden;
+    }
+
+    #progress-fill {
+        height: 100%;
+        width: 0;
+
+        background: #4caf50;
+
+        border-radius: inherit;
+
+        transition: width 0.4s ease;
+    }
+
+    /* MODALES */
+
+    .game-modal {
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 100;
+
+        display: grid;
+        place-items: center;
+
+        background: rgba(25, 45, 80, 0.72);
+
+        backdrop-filter: blur(5px);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .modal-card {
+        width: min(90%, 500px);
+
+        padding: 40px 30px;
+
+        text-align: center;
+
+        background: white;
+
+        border-radius: 30px;
+
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+
+        animation: modal-in 0.4s ease;
+    }
+
+    @keyframes modal-in {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .success-icon {
+        font-size: 70px;
+    }
+
+    .modal-card h2 {
+        margin: 10px 0;
+
+        color: #3157a4;
+
+        font-size: 38px;
+    }
+
+    .modal-card p {
+        color: #555;
+        font-size: 18px;
+    }
+
+    .final-message {
+        font-weight: 700;
+        color: #4caf50 !important;
+    }
+
+    .modal-card button {
+        margin-top: 20px;
+
+        padding: 14px 28px;
+
+        border: none;
+        border-radius: 999px;
+
+        background: #3157a4;
+
+        color: white;
+
+        font-size: 18px;
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: transform 0.2s ease;
+    }
+
+    .modal-card button:hover {
+        transform: scale(1.05);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 640px) {
+        .game-header {
+            height: 70px;
+            padding: 10px 15px;
+        }
+
+        .game-header h1 {
+            font-size: 24px;
+        }
+
+        .game-label {
+            font-size: 9px;
+        }
+
+        .level-indicator {
+            font-size: 14px;
+        }
+
+        .level-indicator strong {
+            font-size: 24px;
+        }
+
+        .classroom-board {
+            border-width: 5px;
+        }
+
+        .window {
+            border-width: 4px;
+        }
+
+        .desk {
+            display: none;
+        }
+
+        .game-footer {
+            padding: 10px 15px;
+        }
+
+        .modal-card {
+            padding: 25px 20px;
+        }
+
+        .success-icon {
+            font-size: 55px;
+        }
+
+        .modal-card h2 {
+            font-size: 30px;
+        }
+    }
+</style>
