@@ -95,6 +95,109 @@ import { LEVELS, VOCALS } from "../data/vocalGame";
 <script>
     const VOCALS = ["A", "E", "I", "O", "U"];
     const TOTAL_LEVELS = 7;
+    let audioContext: AudioContext | null = null;
+
+    const getAudioContext = () => {
+        if (!audioContext) {
+            audioContext = new AudioContext();
+        }
+
+        if (audioContext.state === "suspended") {
+            audioContext.resume();
+        }
+
+        return audioContext;
+    };
+
+    const playCorrectSound = () => {
+        const audio = getAudioContext();
+
+        const notes = [523.25, 659.25];
+
+        notes.forEach((frequency, index) => {
+            const start = audio.currentTime + index * 0.1;
+
+            const oscillator = audio.createOscillator();
+            const gain = audio.createGain();
+
+            oscillator.type = "sine";
+
+            oscillator.frequency.value = frequency;
+
+            gain.gain.setValueAtTime(0.001, start);
+
+            gain.gain.exponentialRampToValueAtTime(0.2, start + 0.02);
+
+            gain.gain.exponentialRampToValueAtTime(0.001, start + 0.18);
+
+            oscillator.connect(gain);
+            gain.connect(audio.destination);
+
+            oscillator.start(start);
+
+            oscillator.stop(start + 0.18);
+        });
+    };
+
+    const playWrongSound = () => {
+        const audio = getAudioContext();
+
+        const oscillator = audio.createOscillator();
+        const gain = audio.createGain();
+
+        oscillator.type = "triangle";
+
+        oscillator.frequency.setValueAtTime(220, audio.currentTime);
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            130,
+            audio.currentTime + 0.18,
+        );
+
+        gain.gain.setValueAtTime(0.001, audio.currentTime);
+
+        gain.gain.exponentialRampToValueAtTime(0.2, audio.currentTime + 0.02);
+
+        gain.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + 0.2);
+
+        oscillator.connect(gain);
+        gain.connect(audio.destination);
+
+        oscillator.start();
+
+        oscillator.stop(audio.currentTime + 0.2);
+    };
+
+    const playLevelCompleteSound = () => {
+        const audio = getAudioContext();
+
+        const notes = [523.25, 659.25, 783.99, 1046.5];
+
+        notes.forEach((frequency, index) => {
+            const start = audio.currentTime + index * 0.12;
+
+            const oscillator = audio.createOscillator();
+
+            const gain = audio.createGain();
+
+            oscillator.type = "sine";
+
+            oscillator.frequency.value = frequency;
+
+            gain.gain.setValueAtTime(0.001, start);
+
+            gain.gain.exponentialRampToValueAtTime(0.25, start + 0.02);
+
+            gain.gain.exponentialRampToValueAtTime(0.001, start + 0.3);
+
+            oscillator.connect(gain);
+            gain.connect(audio.destination);
+
+            oscillator.start(start);
+
+            oscillator.stop(start + 0.3);
+        });
+    };
 
     let currentLevel = 1;
     let currentIndex = 0;
@@ -189,6 +292,7 @@ import { LEVELS, VOCALS } from "../data/vocalGame";
         const expected = VOCALS[currentIndex];
 
         if (vocal === expected) {
+            playCorrectSound();
             correctVocal(element);
 
             currentIndex++;
@@ -206,6 +310,7 @@ import { LEVELS, VOCALS } from "../data/vocalGame";
             return;
         }
 
+        playWrongSound();
         wrongVocal(element);
         showHint(expected);
     };
@@ -309,6 +414,7 @@ import { LEVELS, VOCALS } from "../data/vocalGame";
      * Nivel completado.
      */
     const completeLevel = () => {
+        playLevelCompleteSound();
         setTimeout(() => {
             document.querySelector("#completed-level").textContent =
                 `Nivel ${currentLevel} completado`;
