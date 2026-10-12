@@ -1,0 +1,45 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeaderInnova from "../../data/json/headerinnova.json";
+
+const headerNavigation = HeaderInnova;
+const image = {
+  src: "/ActivityPorfolio/images/homeInnova.webp",
+  alt: "Imagen de LabInnova",
+};
+const title = "PRACTICAS EDUCATIVAS MEDIADAS POR TIC";
+const subtitle = "Angela Rocio Mora Parada";
+const code = "517018_137";
+const members = [
+    "Kimberly Daza Contreras",
+    "Ana Matilde Lozano"
+];
+---
+
+<Layout headerNavigation={headerNavigation}>
+    <section class="mx-auto w-full px-4 pb-12">
+    <!-- Imagen principal -->
+    <img
+      src={image.src}
+      alt={image.alt}
+      class="aspect-[642/383] w-full md:w-1/2 mx-auto rounded-2xl mt-4 object-cover"
+    />
+
+    <!-- Contenido centrado -->
+    <div class="mx-auto mt-8 max-w-4xl text-center">
+      <h1 class="text-4xl font-bold text-gray-900 md:text-5xl">
+        {title}
+      </h1>
+
+      <h2 class="mt-4 text-xl font-semibold text-gray-700 md:text-2xl">
+        {subtitle} - {code}
+      </h2>
+
+      {members.map((member) => (
+        <p class="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-gray-600 md:text-lg">
+          {member}
+        </p>
+      ))}
+    </div>
+  </section>
+</Layout>

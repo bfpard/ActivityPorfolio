@@ -2,6 +2,8 @@
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import '../styles/global.css';
+
+const { headerNavigation } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,7 +25,7 @@ import '../styles/global.css';
 			aria-hidden="true"
 			class="pointer-events-none fixed inset-0 z-0 bg-gradient-to-br from-[#D4E5F8]/60 via-[#D4E5F8]/55 to-[#F1E4D5]/65"
 		></div>
-		<Header />
+		<Header navigation={headerNavigation} />
 		<main class="relative z-10 pt-24">
 			<slot />
 		</main>
