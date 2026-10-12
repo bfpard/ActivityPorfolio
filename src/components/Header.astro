@@ -114,10 +114,10 @@ const { navigation = HeaderDefault }: Props = Astro.props;
 
     <!-- Logo -->
     <a
-      href="/"
+      href={ navigation[0]?.href }
       class="text-xl font-bold text-white"
     >
-      Kimberly Daza Contreras
+      Inicio
     </a>
 
     <!-- Menu button -->
