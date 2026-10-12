@@ -1,0 +1,132 @@
+
+[
+  {
+    "label": "Acerca de mí",
+    "href": "/ActivityPorfolio"
+  },
+  {
+    "label": "Maestros, infancias y contextos",
+    "children": [
+      {
+        "label": "Fase 2: Exploración del territorio",
+        "href": "/ActivityPorfolio/cursos/maestros-infancias-contextos/fase2"
+      },
+      {
+        "label": "Fase 3: Actores territoriales",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 4: Experiencia provocadora",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 5: Ágora",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Diarios de campo",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Simulación",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Referencias bibliográficas",
+        "href": "/ActivityPorfolio"
+      }
+    ]
+  },
+  {
+    "label": "Maestro innovador reflexivo",
+    "children": [
+      {
+        "label": "Fase 2: Planteamiento del problema",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 3: Objetivo general y específicos",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 4: Categorías/LABINNOVA",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 5: Ágora",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Diarios de campo",
+        "href": "/ActivityPorfolio"
+      }
+    ]
+  },
+  {
+    "label": "Maestro investigador reflexivo",
+    "children": [
+      {
+        "label": "Fase 2: Fundamento teórico y pedagógico",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 3: Soporte didáctico",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 4: Recurso gamificado",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 5: Ágora",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Diarios de campo",
+        "href": "/ActivityPorfolio"
+      }
+    ]
+  },
+  {
+    "label": "Maestro investigador transformativo",
+    "children": [
+      {
+        "label": "Fase 2: Infografía Épica 1",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 3: Video e infografía Épica 2",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 4: Simulador",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 5: Ágora",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Diarios de campo",
+        "href": "/ActivityPorfolio"
+      }
+    ]
+  },
+  {
+    "label": "Cátedra de infancias",
+    "children": [
+      {
+        "label": "Fase 2",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 3",
+        "href": "/ActivityPorfolio"
+      },
+      {
+        "label": "Fase 4",
+        "href": "/ActivityPorfolio"
+      }
+    ]
+  }
+]
