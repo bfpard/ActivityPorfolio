@@ -41,26 +41,6 @@
   {
     "label": "Cuentos",
     "children": [
-      {
-        "label": "Fase 2: Fundamento teórico y pedagógico",
-        "href": "/ActivityPorfolio"
-      },
-      {
-        "label": "Fase 3: Soporte didáctico",
-        "href": "/ActivityPorfolio"
-      },
-      {
-        "label": "Fase 4: Recurso gamificado",
-        "href": "/ActivityPorfolio"
-      },
-      {
-        "label": "Fase 5: Ágora",
-        "href": "/ActivityPorfolio"
-      },
-      {
-        "label": "Diarios de campo",
-        "href": "/ActivityPorfolio"
-      }
     ]
   }
 ]
