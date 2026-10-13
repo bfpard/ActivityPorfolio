@@ -30,11 +30,11 @@
     "children": [
       {
         "label": "Las Vocales",
-        "href": "/ActivityPorfolio/vocales"
+        "href": "/ActivityPorfolio/labinnova/games/vocales"
       },
       {
-        "label": "El detective de sonidos",
-        "href": "/ActivityPorfolio/juegos/detective-sonidos"
+        "label": "Sonidos y Vocales",
+        "href": "/ActivityPorfolio/labinnova/games/sonido-y-vocales"
       }
     ]
   },
