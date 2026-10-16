@@ -1,0 +1,10 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import HeaderInnova from '../../../data/json/headerinnova.json';
+import AboutMe from '../../../components/AboutMe.astro';
+import adrianaProfile from '../../../data/json/adrianaInnova.json';
+---
+
+<Layout headerNavigation={HeaderInnova}>
+    <AboutMe profile={adrianaProfile}></AboutMe>
+</Layout>

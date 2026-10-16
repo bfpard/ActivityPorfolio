@@ -21,7 +21,7 @@
       },
       {
         "label": "Alejandra Galeano Casallas",
-        "href": "/ActivityPorfolio/labinnova/integrantes/alejandra-galeano-casallas"
+        "href": "/ActivityPorfolio/labinnova/integrantes/alejandra-galeano"
       }
     ]
   },
@@ -41,6 +41,10 @@
   {
     "label": "Cuentos",
     "children": [
+      {
+        "label": "Exploradores",
+        "href": "/ActivityPorfolio/labinnova/games/exploradores"
+      }
     ]
   }
 ]
