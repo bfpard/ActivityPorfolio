@@ -1,4 +1,36 @@
 ---
+const titulo = "Mi juego educativo de las vocales";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{titulo}</title>
+    <meta
+      name="description"
+      content="Juego educativo interactivo para aprender las vocales."
+    />
+  </head>
+
+  <body>
+    <main class="pagina">
+      <h1>🐸 ¡Vamos a jugar con las vocales!</h1>
+      <p class="descripcion">
+        Diviértete aprendiendo con nuestro juego interactivo.
+      </p>
+
+      <!-- Juego de Genially -->
+      <div class="container-wrapper-genially">
+        <div
+          id="6acc53bd2deb6bd5811aa9fd"
+          class="genially-embed"
+        ></div>
+      </div>
+    </main>
+
+
 import VocalGame from "../../../../components/VocalGame.astro"; 
 ---
 
@@ -18,10 +50,3 @@ import VocalGame from "../../../../components/VocalGame.astro";
       content="Juego interactivo para aprender las vocales"
     />
   </head>
-
-  <body>
-    <main>
-      <VocalGame />
-    </main>
-  </body>
-</html>
