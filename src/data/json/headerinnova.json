@@ -29,12 +29,16 @@
     "label": "Jugando aprendo más",
     "children": [
       {
-        "label": "Las Vocales",
+        "label": "Las vocales saltarinas",
         "href": "/ActivityPorfolio/labinnova/games/vocales"
       },
       {
-        "label": "Sonidos y Vocales",
-        "href": "/ActivityPorfolio/labinnova/games/sonido-y-vocales"
+        "label": "Exploradores",
+        "href": "/ActivityPorfolio/labinnova/games/exploradores"
+      },
+      {
+        "label": "Adivinanzas",
+        "href": "/ActivityPorfolio/labinnova/games/juego-vocal-ana"
       }
     ]
   },
@@ -42,9 +46,17 @@
     "label": "Cuentos",
     "children": [
       {
-        "label": "Exploradores",
-        "href": "/ActivityPorfolio/labinnova/games/exploradores"
+        "label": "Detectives de vocales",
+        "href": "/ActivityPorfolio/labinnova/games/explora-vocales"
+      },
+      {
+        "label": "Las aventuras de las vocales",
+        "href": "/ActivityPorfolio/labinnova/games/sonido-y-vocales"
       }
     ]
+    {
+        "label": "Memoria",
+        "href": "/ActivityPorfolio/labinnova/games/memoria"
+      }
   }
 ]
