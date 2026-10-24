@@ -1,82 +1,154 @@
 ---
+import Layout from "../../../../layouts/Layout.astro";
+import headerNavigation from "../../../../data/json/headerinnova.json";
+
 const titulo = "Mi juego educativo de las vocales";
 ---
 
-<!doctype html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{titulo}</title>
-        <meta
-            name="description"
-            content="Juego educativo interactivo para aprender las vocales."
-        />
-    </head>
+<Layout headerNavigation={headerNavigation}>
+    <section class="pagina">
+        <h1>🐷¡A Explorar!🐮</h1>
+        <p class="descripcion">Pequeños Grandes Exploradores.</p>
+        <section class="secuencia">
+            <h1 class="titulo">Aprende jugando y saltando</h1>
 
-    <body>
-        <main class="pagina">
-            <h1>🐸 ¡Vamos a jugar con las vocales!</h1>
-            <p class="descripcion">
-                Diviértete aprendiendo con nuestro juego interactivo.
-            </p>
-
-            <!-- Juego de Genially -->
-            <div
-                class="container-wrapper-genially"
-                style={`position: relative; min-height: 400px; max-width: 100%;`}
-            >
-                <video
-                    class="loader-genially"
-                    autoplay
-                    loop
-                    playsinline
-                    muted
-                    aria-label="Cargando juego"
-                    style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px;"
-                >
-                    <source
-                        src="https://static.genially.com/resources/loader-default-rebranding.mp4"
-                        type="video/mp4"
-                    />
-                    Tu navegador no soporta la reproducción de video.
-                </video>
-
-                <div
-                    id="6abc53f9d0fa46379d13dc2d"
-                    class="genially-embed"
-                    style="margin: 0 auto; position: relative; height: auto; width: 100%;"
-                >
-                </div>
+            <div class="finalidad">
+                <h2>🎯 Actividad</h2>
+                <p>
+                    <strong>Las Vocales Saltarinas</strong> busca integrar al grupo
+                    y evaluar los saberes previos sobre las vocales. Se fomenta el
+                    gusto por escuchar historias, la participación y el reconocimiento
+                    visual y sonoro de las vocales a través de un cuento breve, juegos
+                    digitales y dinámicas con materiales.
+                </p>
             </div>
-        </main>
 
-        <!-- Script de Genially -->
-        <script>
-            const scriptId = "genially-embed-js";
+            <div class="pasos">
+                <h2>📖 Paso a paso</h2>
+                <ol>
+                    <li>
+                        <strong>Inicio – </strong> La docente reúne al grupo en círculo
+                        o semicírculo, lee para el grupo un cuento de las vocales
+                        y hace pausas para preguntas y comentarios.
+                    </li>
+                    <li>
+                        <strong>Exploración – :</strong> Los niños observan el video
+                        de apoyo del "Monosilabo".
+                    </li>
+                    <li>
+                        <strong>Creación Plastilina – :</strong> Forman las vocales
+                        con plastilina de colores y muestran sus creaciones al grupo.
+                    </li>
+                    <li>
+                        <strong
+                            >Interacción digital Juego en plataforma –:</strong
+                        > Realizan actividades en computador siguiendo el juego de
+                        las vocales para realizar una revia evaluación de saberes.
+                    </li>
+                </ol>
+            </div>
 
-            if (!document.getElementById(scriptId)) {
-                const script = document.createElement("script");
+            <div class="aprendizajes">
+                <h2>🌟 Aprendizajes esperados</h2>
+                <ul>
+                    <li>Comprender información sencilla de la historia.</li>
+                    <li>
+                        Identificar visualmente una vocal y relacionarla con su
+                        sonido.
+                    </li>
+                    <li>
+                        Participar respetando turnos y escuchando a los demás.
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Juego de Genially -->
+        <div
+            class="container-wrapper-genially"
+            style={`position: relative; min-height: 400px; max-width: 100%;`}
+        >
+            <video
+                class="loader-genially"
+                autoplay
+                loop
+                playsinline
+                muted
+                aria-label="Cargando juego"
+                style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px;"
+            >
+                <source
+                    src="https://static.genially.com/resources/loader-default-rebranding.mp4"
+                    type="video/mp4"
+                />
+                Tu navegador no soporta la reproducción de video.
+            </video>
 
-                script.id = scriptId;
-                script.async = true;
-                script.src = "https://view.genially.com/static/embed/embed.js";
+            <div
+                id="6abc53f9d0fa46379d13dc2d"
+                class="genially-embed"
+                style="margin: 0 auto; position: relative; height: auto; width: 100%;"
+            >
+            </div>
+        </div>
+    </section>
+</Layout>
+<script>
+    const scriptId = "genially-embed-js";
 
-                document.head.appendChild(script);
-            }
-        </script>
-    </body>
-</html>
+    if (!document.getElementById(scriptId)) {
+        const script = document.createElement("script");
 
+        script.id = scriptId;
+        script.async = true;
+        script.src = "https://view.genially.com/static/embed/embed.js";
+
+        document.head.appendChild(script);
+    }
+</script>
 <style>
-    * {
-        box-sizing: border-box;
+    .secuencia {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fdfdfd;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-family: "Segoe UI", sans-serif;
+      line-height: 1.6;
+      text-align: start;
     }
 
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #fff8e8;
+    .titulo {
+      text-align: center;
+      color: #4a148c;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .secuencia h2 {
+      color: #00695c;
+      margin-top: 1.5rem;
+    }
+
+    .secuencia p {
+      margin-bottom: 1rem;
+    }
+
+    .secuencia ol {
+      padding-left: 1.2rem;
+    }
+
+    .secuencia li {
+      margin-bottom: 0.8rem;
+    }
+
+    .secuencia ul {
+      list-style: disc;
+      padding-left: 1.2rem;
+    }
+
+    .aprendizajes li {
+      margin-bottom: 0.5rem;
     }
 
     .pagina {

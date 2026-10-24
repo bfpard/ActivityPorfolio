@@ -1,136 +1,131 @@
 ---
+import Layout from "../../../../layouts/Layout.astro";
+import headerNavigation from "../../../../data/json/headerinnova.json";
 const titulo = "Juego de las vocales";
 ---
 
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{titulo}</title>
-    <meta
-      name="description"
-      content="Juego educativo interactivo para aprender las vocales."
-    />
-    <style>
-      * {
-        box-sizing: border-box;
-      }
+<Layout headerNavigation={headerNavigation}>
+  <main class="pagina">
+    <!-- Secuencia Didáctica: Las Vocales Saltarinas -->
+    <section class="secuencia">
+      <h1 class="titulo">Aprende jugando y saltando</h1>
 
-      body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #fff8e8;
-      }
+      <div class="finalidad">
+        <h2>🎯 Actividad</h2>
+        <p>
+          <strong>Explora vocales: En busca de las letras mágicas</strong> a través
+          de retos,exploración y actividades los niños y niñas desarrollan habilidades
+          de identificación, asociación de vocales.
+        </p>
+      </div>
 
-      .pagina {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 30px 20px;
-        text-align: center;
-      }
-      .secuencia {
-        max-width: 800px;
-        margin: 2rem auto;
-        padding: 2rem;
-        background: #fdfdfd;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        font-family: "Segoe UI", sans-serif;
-        line-height: 1.6;
-        text-align: start;
-      }
+      <div class="pasos">
+        <h2>📖 Paso a paso</h2>
+        <ol>
+          <li>
+            <strong>Inicio – </strong> La docente reúne a los estudiantes en semicírculo,
+            se realiza una dinamíca llamada "La vocal misteriosa" donde se va a enseñar
+            las vocales con una pizarra virtual,se conversan sobre las vocales que
+            conocen y las palabras que comienza cada una.
+          </li>
+          <li>
+            <strong>Exploración – :</strong> La docente presenta el juego interactivo
+            "Explora vocales: En busca de las letras mágicas" y los estudiantes participan
+            en la actividad, explicando como deben completar los desafios.
+          </li>
+          <li>
+            <strong>Desarrollo:</strong> Los niños participan en el juego de manera
+            individual o colaborativa durante la exploración deberán: reconocer as
+            vocales,resolver retos de obervación y clasificación superando sus desafios
+            la docente acompaña el proceso orientando a los estudiantes cuando sea
+            necesario y reforzando los aprendizajes alcanzados.
+          </li>
+          <li>
+            <strong>Cierre y socialización –:</strong> Los estudiantes comparten cuál fue la vocal que encontraron más fácilmente y cuál les pareció más desafiante.
+Cada niño muestra una tarjeta con su vocal favorita y menciona una palabra relacionada, permitiendo a la docente una retroalimentación sobre el aprendizaje de las vocales.
+          </li>
+        </ol>
+      </div>
 
-      .titulo {
-        text-align: center;
-        color: #4a148c;
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-      }
+      <div class="aprendizajes">
+        <h2>🌟 Aprendizajes esperados</h2>
+        <ul>
+          <li>Identificarán visualmente las vocales en distintos contextos</li>
+          <li>
+           Clasificarán las vocales según su forma y sonido.
+          </li>
+          <li>Participarán activamente en experiencias digitales de aprendizaje.</li>
+          <li>Participar respetando turnos y escuchando a los demás.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="game">
+      <iframe
+        allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
+        allowfullscreen
+        width="795"
+        height="690"
+        frameborder="0"
+        src="https://es.educaplay.com/juego/30819436-exploradores_de_vocales.html"
+      ></iframe>
+    </section>
+  </main>
+</Layout>
+<style>
+  .pagina {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .secuencia {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fdfdfd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    text-align: start;
+  }
 
-      .secuencia h2 {
-        color: #00695c;
-        margin-top: 1.5rem;
-      }
+  .titulo {
+    text-align: center;
+    color: #4a148c;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
 
-      .secuencia p {
-        margin-bottom: 1rem;
-      }
+  .secuencia h2 {
+    color: #00695c;
+    margin-top: 1.5rem;
+  }
 
-      .secuencia ol {
-        padding-left: 1.2rem;
-      }
+  .secuencia p {
+    margin-bottom: 1rem;
+  }
 
-      .secuencia li {
-        margin-bottom: 0.8rem;
-      }
+  .secuencia ol {
+    padding-left: 1.2rem;
+  }
 
-      .secuencia ul {
-        list-style: disc;
-        padding-left: 1.2rem;
-      }
+  .secuencia li {
+    margin-bottom: 0.8rem;
+  }
 
-      .aprendizajes li {
-        margin-bottom: 0.5rem;
-      }
-    </style>
-  </head>
+  .secuencia ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+  }
 
-  <body>
-    <main class="pagina">
-      <!-- Secuencia Didáctica: Las Vocales Saltarinas -->
-      <section class="secuencia">
-        <h1 class="titulo">Aprende jugando y saltando</h1>
+  .aprendizajes li {
+    margin-bottom: 0.5rem;
+  }
 
-        <div class="finalidad">
-          <h2>🎯 Actividad</h2>
-          <p>
-            <strong>Las Vocales Saltarinas</strong> busca integrar al grupo y evaluar
-            los saberes previos sobre las vocales. Se fomenta el gusto por escuchar
-            historias, la participación y el reconocimiento visual y sonoro de las
-            vocales a través de un cuento breve, juegos digitales y dinámicas con
-            materiales.
-          </p>
-        </div>
-
-        <div class="pasos">
-          <h2>📖 Paso a paso</h2>
-          <ol>
-            <li>
-              <strong>Inicio  – </strong> La docente reúne al
-              grupo en círculo o semicírculo, lee para el grupo un cuento de las vocales y hace
-              pausas para preguntas y comentarios.
-            </li>
-            <li>
-              <strong>Exploración – :</strong> Los niños
-              levantan fichas con las vocales que escuchan en el cuento. 
-            </li>
-            <li>
-              <strong>Creación Plastilina – :</strong> Forman las vocales
-              con plastilina de colores y muestran sus creaciones al grupo.
-            </li>
-            <li>
-              <strong
-                >Interacción digital Juego en plataforma –:</strong
-              > Realizan actividades en computador siguiendo el juego de las vocales para realizar una revia evaluación de saberes.
-            </li>
-          </ol>
-          
-        </div>
-
-        <div class="aprendizajes">
-          <h2>🌟 Aprendizajes esperados</h2>
-          <ul>
-            <li>Comprender información sencilla de la historia.</li>
-            <li>
-              Identificar visualmente una vocal y relacionarla con su sonido.
-            </li>
-            <li>Participar respetando turnos y escuchando a los demás.</li>
-          </ul>
-        </div>
-      </section>
-      <iframe allow="fullscreen; autoplay; allow-top-navigation-by-user-activation" allowfullscreen width="795" height="690" frameborder="0" src="https://es.educaplay.com/juego/30819436-exploradores_de_vocales.html"></iframe>
-    </main>
-  </body>
-</html>
+  .game {
+    display: flex;
+    justify-content: center;
+  }
+</style>

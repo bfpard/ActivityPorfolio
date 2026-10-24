@@ -1,61 +1,137 @@
 ---
-const titulo = "Mi juego educativo de las vocales";
+import Layout from "../../../../layouts/Layout.astro";
+import headerNavigation from "../../../../data/json/headerinnova.json";
 ---
 
-<!doctype html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{titulo}</title>
-        <meta
-            name="description"
-            content="Juego educativo interactivo para aprender las vocales."
-        />
-    </head>
+<Layout headerNavigation={headerNavigation}>
+    <main class="pagina">
+        <section class="secuencia">
+            <h1 class="titulo">Aprende jugando y saltando</h1>
 
-    <body>
-        <main class="pagina">
-            <div
-                style="position: relative; width: 100%; height: 0; padding-top: 100.0000%;
+            <div class="finalidad">
+                <h2>🎯 Actividad</h2>
+                <p>
+                    <strong>Las Vocales Saltarinas</strong> busca integrar al grupo
+                    y evaluar los saberes previos sobre las vocales. Se fomenta el
+                    gusto por escuchar historias, la participación y el reconocimiento
+                    visual y sonoro de las vocales a través de un cuento breve, juegos
+                    digitales y dinámicas con materiales.
+                </p>
+            </div>
+
+            <div class="pasos">
+                <h2>📖 Paso a paso</h2>
+                <ol>
+                    <li>
+                        <strong>Inicio – </strong> La docente reúne al grupo en círculo
+                        o semicírculo, lee para el grupo un cuento de las vocales
+                        y hace pausas para preguntas y comentarios.
+                    </li>
+                    <li>
+                        <strong>Exploración – :</strong> Los niños observan el video
+                        de apoyo del "Monosilabo".
+                    </li>
+                    <li>
+                        <strong>Creación Plastilina – :</strong> Forman las vocales
+                        con plastilina de colores y muestran sus creaciones al grupo.
+                    </li>
+                    <li>
+                        <strong
+                            >Interacción digital Juego en plataforma –:</strong
+                        > Realizan actividades en computador siguiendo el juego de
+                        las vocales para realizar una revia evaluación de saberes.
+                    </li>
+                </ol>
+            </div>
+
+            <div class="aprendizajes">
+                <h2>🌟 Aprendizajes esperados</h2>
+                <ul>
+                    <li>Comprender información sencilla de la historia.</li>
+                    <li>
+                        Identificar visualmente una vocal y relacionarla con su
+                        sonido.
+                    </li>
+                    <li>
+                        Participar respetando turnos y escuchando a los demás.
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div
+            style="position: relative; width: 100%; height: 0; padding-top: 100.0000%;
  padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
  border-radius: 8px; will-change: transform;"
+        >
+            <iframe
+                loading="lazy"
+                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https://www.canva.com/design/DAHX1efwKkc/fcXA1n4xrFWv5uvUkSrW-g/view?embed"
+                allowfullscreen="allowfullscreen"
+                allow="fullscreen"
             >
-                <iframe
-                    loading="lazy"
-                    style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-                    src="https://www.canva.com/design/DAHX1efwKkc/fcXA1n4xrFWv5uvUkSrW-g/view?embed"
-                    allowfullscreen="allowfullscreen"
-                    allow="fullscreen"
-                >
-                </iframe>
-            </div>
-            <a
-                href="https://www.canva.com/design/DAHX1efwKkc/fcXA1n4xrFWv5uvUkSrW-g/view?utm_content=DAHX1efwKkc&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
-                target="_blank"
-                rel="noopener">Actividad digital de vocales</a
-            > de Papeleria Arcoíris
-        </main>
-    </body>
-</html>
+            </iframe>
+        </div>
+        <a
+            href="https://www.canva.com/design/DAHX1efwKkc/fcXA1n4xrFWv5uvUkSrW-g/view?utm_content=DAHX1efwKkc&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+            target="_blank"
+            rel="noopener">Actividad digital de vocales</a
+        > de Papeleria Arcoíris
+    </main>
+</Layout>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #fff8e8;
-    }
-
     .pagina {
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
         padding: 30px 20px;
         text-align: center;
+    }
+
+    .titulo {
+        text-align: center;
+        color: #4a148c;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .secuencia h2 {
+        color: #00695c;
+        margin-top: 1.5rem;
+    }
+
+    .secuencia p {
+        margin-bottom: 1rem;
+    }
+
+    .secuencia ol {
+        padding-left: 1.2rem;
+    }
+
+    .secuencia li {
+        margin-bottom: 0.8rem;
+    }
+
+    .secuencia ul {
+        list-style: disc;
+        padding-left: 1.2rem;
+    }
+
+    .aprendizajes li {
+        margin-bottom: 0.5rem;
+    }
+
+    .secuencia {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: #fdfdfd;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-family: "Segoe UI", sans-serif;
+        line-height: 1.6;
+        text-align: start;
     }
 
     h1 {
