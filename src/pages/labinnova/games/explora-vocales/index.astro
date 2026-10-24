@@ -1,6 +1,7 @@
 ---
 import Layout from "../../../../layouts/Layout.astro";
 import headerNavigation from "../../../../data/json/headerinnova.json";
+import Dashboard from "../../../../components/Dashboard.astro";
 const titulo = "Juego de las vocales";
 ---
 
@@ -9,7 +10,7 @@ const titulo = "Juego de las vocales";
     <!-- Secuencia Didáctica: Las Vocales Saltarinas -->
     <section class="secuencia">
       <h1 class="titulo">Aprende jugando y saltando</h1>
-
+      
       <div class="finalidad">
         <h2>🎯 Actividad</h2>
         <p>
@@ -18,7 +19,7 @@ const titulo = "Juego de las vocales";
           de identificación, asociación de vocales.
         </p>
       </div>
-
+      
       <div class="pasos">
         <h2>📖 Paso a paso</h2>
         <ol>
@@ -46,22 +47,23 @@ Cada niño muestra una tarjeta con su vocal favorita y menciona una palabra rela
           </li>
         </ol>
       </div>
-
+      
       <div class="aprendizajes">
         <h2>🌟 Aprendizajes esperados</h2>
         <ul>
           <li>Identificarán visualmente las vocales en distintos contextos</li>
           <li>
-           Clasificarán las vocales según su forma y sonido.
+            Clasificarán las vocales según su forma y sonido.
           </li>
           <li>Participarán activamente en experiencias digitales de aprendizaje.</li>
           <li>Participar respetando turnos y escuchando a los demás.</li>
         </ul>
       </div>
     </section>
+    <Dashboard></Dashboard>
     <section class="game">
       <iframe
-        allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
+      allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
         allowfullscreen
         width="795"
         height="690"
@@ -125,6 +127,7 @@ Cada niño muestra una tarjeta con su vocal favorita y menciona una palabra rela
   }
 
   .game {
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
   }
