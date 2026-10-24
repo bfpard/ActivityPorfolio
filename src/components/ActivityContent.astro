@@ -1,71 +1,74 @@
 ---
-const activity = {
-    title: "Informe de Resultados de Actividades",
+interface EvidenceImage {
+    title: string;
+    description: string;
+    src: string;
+    alt: string;
+}
 
-    description:
-        "Resumen consolidado de las actividades realizadas, los resultados obtenidos y las evidencias recopiladas durante el desarrollo de la actividad.",
+interface GalleryImage {
+    src: string;
+    alt: string;
+}
 
+interface EvidenceGallery {
+    title: string;
+    description: string;
+    /** N imágenes a maquetar dentro de la card. */
+    images: GalleryImage[];
+}
+
+interface EvidenceText {
+    title: string;
+    description: string;
+    /** Opcional: si existe, se renderiza como lista (ul/li) bajo la descripción. */
+    steps?: string[];
+}
+
+interface VideoIframe {
+    embedUrl: string;
+    width?: number;
+    height?: number;
+    title?: string;
+}
+
+interface EvidenceVideo {
+    title: string;
+    description: string;
+    /** URL de inserción de YouTube (escenario 1). */
+    youtubeUrl?: string;
+    /** Configuración de iframe genérico, p. ej. SharePoint/Stream (escenario 2). */
+    iframe?: VideoIframe;
+}
+
+interface Activity {
+    title: string;
+    description: string;
     evidence: {
-        socialCartography: {
-            title: "Cartografía Social",
-            description:
-                "Registro visual de la actividad realizada durante la jornada.",
-            src: "/ActivityPorfolio/images/cartografia.webp",
-            alt: "Evidencia fotográfica de la actividad",
-        },
+        socialCartography: EvidenceImage;
+        groupCartography: EvidenceGallery;
+        problematic: EvidenceText;
+        video: EvidenceVideo;
+    };
+}
 
-        groupCartography: {
-            title: "Cartografía Grupal",
-            description:
-                "Socialización de cartografías individuales.",
-            src: "/ActivityPorfolio/images/cartogrupal.webp",
-            alt: "Cartografías grupales",
-        },
+type TableCell = string | { label: string; href: string };
 
-        problematic: {
-            title: "Problemática",
-            description:
-                "La problemática que se evidencia en la Institución Educativa Nuestra Señora de Belén" + 
-                ' está relacionada con la falta de herramientas pedagógicas y de acompañamiento especializado' + 
-                ' para los niños y niñas con Planes Individuales de Ajustes Razonables (PIAR). La tensión principal' +
-                ' surge de la ausencia de una docente encargada de apoyar estos procesos, lo que genera un vacío entre' +
-                ' las necesidades educativas particulares de los estudiantes y la capacidad institucional para responder de' + 
-                ' manera adecuada. Esta situación afecta directamente a los niños con PIAR, pero también repercute en sus familias y en los docentes que, sin contar con los recursos ni la formación suficiente, deben improvisar estrategias para atender la diversidad en el aula. La tensión se origina por la carencia de personal especializado y de materiales adaptados, lo que limita la inclusión real y la equidad en el aprendizaje. En la primera infancia, esta problemática se traduce en barreras para el desarrollo integral, pues los niños no logran acceder a experiencias educativas ajustadas a sus ritmos y estilos de aprendizaje, lo que puede impactar su autoestima, su motivación y sus oportunidades de socialización. En consecuencia, la falta de apoyo especializado no solo restringe el derecho a una educación inclusiva, sino que también profundiza las desigualdades dentro del contexto escolar.',
-        },
+interface TableData {
+    columns: string[];
+    rows: TableCell[][];
+}
 
-        video: {
-            title: "Resumen audiovisual",
-            description:
-                "Video descriptivo con el desarrollo y los principales momentos de la actividad.",
+interface Props {
+    activity: Activity;
+    /** Opcional: si no se pasa, no se renderiza la tabla (p. ej. Fase 3 sin diario de campo). */
+    tableData?: TableData | null;
+}
 
-            // URL de inserción de YouTube
-            youtubeUrl: "https://www.youtube-nocookie.com/embed/K7e_jwTc3R8?si=ZDsQEFqDIQ2QfzOb",
-        },
-    },
-};
+const { activity, tableData = null } = Astro.props;
 
-/**
- * Configuración de la tabla.
- *
- * La cantidad de columnas depende de `columns`.
- * La cantidad de filas depende de `rows`.
- */
-const tableData = {
-    columns: [
-        "Actividad",
-        "Enlace",
-    ],
-
-    rows: [
-        [
-            "Diario de campo",
-            {
-                label: "Abrir documento",
-                href: "https://unadvirtualedu-my.sharepoint.com/:w:/g/personal/kdazaco_unadvirtual_edu_co/IQDgi1G6dD0_RZQyvHv6c_zPAT0HG-RZM-1f-dZkeSVbZQs?e=OQO6zv",
-            },
-        ],
-    ],
-};
+const video = activity.evidence.video;
+const videoSrc = video.youtubeUrl ?? video.iframe?.embedUrl;
 ---
 
 <div class="w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
@@ -89,58 +92,56 @@ const tableData = {
         </section>
 
         <!-- ========================= -->
-        <!-- TABLE -->
+        <!-- TABLE (opcional) -->
         <!-- ========================= -->
 
-        <section
-            class="mb-12 overflow-x-auto rounded-xl border border-gray-100 bg-white shadow-sm"
-        >
-            <div class="min-w-[700px]">
-                <table class="w-full border-collapse text-left">
-                    <!-- Header -->
-                    <thead>
-                        <tr class="bg-[#F0F3FB]">
-                            {
-                                tableData.columns.map((column) => (
-                                    <th
-                                        scope="col"
-                                        class="px-5 py-4 text-xs font-semibold uppercase tracking-wide text-[#27456F]"
-                                    >
-                                        {column}
-                                    </th>
-                                ))
-                            }
-                        </tr>
-                    </thead>
-
-                    <!-- Rows -->
-                    <tbody class="divide-y divide-gray-100">
-                        {
-                            tableData.rows.map((row) => (
-                                <tr class="transition-colors hover:bg-gray-50">
-                                    {row.map((cell) => (
-                                        <td class="px-5 py-4 text-sm text-gray-700">
-                                            {typeof cell === "string" ? (
-                                                cell
-                                            ) : (
-                                                <a
-                                                    href={cell.href}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    class="font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-900"
-                                                >
-                                                    {cell.label}
-                                                </a>
-                                            )}
-                                        </td>
+        {
+            tableData && tableData.rows.length > 0 && (
+                <section class="mb-12 overflow-x-auto rounded-xl border border-gray-100 bg-white shadow-sm">
+                    <div class="min-w-[700px]">
+                        <table class="w-full border-collapse text-left">
+                            {/* Header */}
+                            <thead>
+                                <tr class="bg-[#F0F3FB]">
+                                    {tableData.columns.map((column) => (
+                                        <th
+                                            scope="col"
+                                            class="px-5 py-4 text-xs font-semibold uppercase tracking-wide text-[#27456F]"
+                                        >
+                                            {column}
+                                        </th>
                                     ))}
                                 </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </section>
+                            </thead>
+
+                            {/* Rows */}
+                            <tbody class="divide-y divide-gray-100">
+                                {tableData.rows.map((row) => (
+                                    <tr class="transition-colors hover:bg-gray-50">
+                                        {row.map((cell) => (
+                                            <td class="px-5 py-4 text-sm text-gray-700">
+                                                {typeof cell === "string" ? (
+                                                    cell
+                                                ) : (
+                                                    <a
+                                                        href={cell.href}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        class="font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-900"
+                                                    >
+                                                        {cell.label}
+                                                    </a>
+                                                )}
+                                            </td>
+                                        ))}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            )
+        }
 
         <!-- ========================= -->
         <!-- EVIDENCE -->
@@ -179,13 +180,21 @@ const tableData = {
                         </p>
                     </div>
 
-                    <div class="overflow-hidden rounded-lg bg-gray-100">
-                        <img
-                            src={activity.evidence.groupCartography.src}
-                            alt={activity.evidence.groupCartography.alt}
-                            class="h-[25rem] w-full object-cover object-top"
-                            loading="lazy"
-                        />
+                    <div class="space-y-4">
+                        {
+                            activity.evidence.groupCartography.images.map(
+                                (image) => (
+                                    <div class="overflow-hidden rounded-lg bg-gray-100">
+                                        <img
+                                            src={image.src}
+                                            alt={image.alt}
+                                            class="w-full object-cover object-top"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                ),
+                            )
+                        }
                     </div>
                 </article>
 
@@ -204,13 +213,25 @@ const tableData = {
                         <p class="mt-1 text-sm leading-6 text-gray-600">
                             {activity.evidence.problematic.description}
                         </p>
+
+                        {
+                            activity.evidence.problematic.steps &&
+                                activity.evidence.problematic.steps.length > 0 && (
+                                    <ul class="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-gray-600">
+                                        {activity.evidence.problematic.steps.map(
+                                            (step) => (
+                                                <li>{step}</li>
+                                            ),
+                                        )}
+                                    </ul>
+                                )
+                        }
                     </div>
                 </article>
             </div>
         </section>
 
         <section>
-
             <!-- Evidence grid -->
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 <!-- ========================= -->
@@ -241,7 +262,7 @@ const tableData = {
                 </article>
 
                 <!-- ========================= -->
-                <!-- YOUTUBE VIDEO -->
+                <!-- VIDEO (YouTube o iframe genérico) -->
                 <!-- ========================= -->
 
                 <article
@@ -249,24 +270,27 @@ const tableData = {
                 >
                     <div class="mb-4">
                         <h3 class="text-xl font-semibold text-[#0C2340]">
-                            {activity.evidence.video.title}
+                            {video.title}
                         </h3>
 
                         <p class="mt-1 text-sm leading-6 text-gray-600">
-                            {activity.evidence.video.description}
+                            {video.description}
                         </p>
                     </div>
 
                     <div class="h-[25rem] overflow-hidden rounded-lg bg-black">
-                        <iframe
-                            src={activity.evidence.video.youtubeUrl}
-                            title={activity.evidence.video.title}
-                            class="h-full w-full"
-                            loading="lazy"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                        >
-                        </iframe>
+                        {
+                            videoSrc && (
+                                <iframe
+                                    src={videoSrc}
+                                    title={video.iframe?.title ?? video.title}
+                                    class="h-full w-full"
+                                    loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen
+                                />
+                            )
+                        }
                     </div>
                 </article>
             </div>
