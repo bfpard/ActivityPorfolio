@@ -1,0 +1,45 @@
+{
+    "activityInfo": {
+        "title": "Informe de Resultados de Actividades",
+        "description": "Resumen consolidado de las actividades realizadas, los resultados obtenidos y las evidencias recopiladas durante el desarrollo de la actividad.",
+        "evidence": {
+            "socialCartography": {
+                "title": "Cartografía Social",
+                "description": "Registro visual de la actividad realizada durante la jornada.",
+                "src": "/ActivityPorfolio/images/cartografia.webp",
+                "alt": "Evidencia fotográfica de la actividad"
+            },
+            "groupCartography": {
+                "title": "Cartografía Grupal",
+                "description": "Socialización de cartografías individuales.",
+                "images": [
+                    {
+                        "src": "/ActivityPorfolio/images/cartogrupal.webp",
+                        "alt": "Cartografías grupales"
+                    }
+                ]
+            },
+            "problematic": {
+                "title": "Problemática",
+                "description": "La problemática que se evidencia en la Institución Educativa Nuestra Señora de Belén está relacionada con la falta de herramientas pedagógicas y de acompañamiento especializado para los niños y niñas con Planes Individuales de Ajustes Razonables (PIAR). La tensión principal surge de la ausencia de una docente encargada de apoyar estos procesos, lo que genera un vacío entre las necesidades educativas particulares de los estudiantes y la capacidad institucional para responder de manera adecuada. Esta situación afecta directamente a los niños con PIAR, pero también repercute en sus familias y en los docentes que, sin contar con los recursos ni la formación suficiente, deben improvisar estrategias para atender la diversidad en el aula. La tensión se origina por la carencia de personal especializado y de materiales adaptados, lo que limita la inclusión real y la equidad en el aprendizaje. En la primera infancia, esta problemática se traduce en barreras para el desarrollo integral, pues los niños no logran acceder a experiencias educativas ajustadas a sus ritmos y estilos de aprendizaje, lo que puede impactar su autoestima, su motivación y sus oportunidades de socialización. En consecuencia, la falta de apoyo especializado no solo restringe el derecho a una educación inclusiva, sino que también profundiza las desigualdades dentro del contexto escolar."
+            },
+            "video": {
+                "title": "Resumen audiovisual",
+                "description": "Video descriptivo con el desarrollo y los principales momentos de la actividad.",
+                "youtubeUrl": "https://www.youtube-nocookie.com/embed/K7e_jwTc3R8?si=ZDsQEFqDIQ2QfzOb"
+            }
+        }
+    },
+    "tableData": {
+        "columns": ["Actividad", "Enlace"],
+        "rows": [
+            [
+                "Diario de campo",
+                {
+                    "label": "Abrir documento",
+                    "href": "https://unadvirtualedu-my.sharepoint.com/:w:/g/personal/kdazaco_unadvirtual_edu_co/IQDgi1G6dD0_RZQyvHv6c_zPAT0HG-RZM-1f-dZkeSVbZQs?e=OQO6zv"
+                }
+            ]
+        ]
+    }
+}

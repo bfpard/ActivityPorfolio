@@ -1,10 +1,9 @@
 ---
 import ActivityContent from "../../../components/ActivityContent.astro";
 import Layout from "../../../layouts/Layout.astro";
-
-
+import fase2 from "../../../data/json/Maestros/fase2.json";
 ---
 
 <Layout>
-	<ActivityContent />
+	<ActivityContent activity={fase2.activityInfo} tableData={fase2.tableData} />
 </Layout>
