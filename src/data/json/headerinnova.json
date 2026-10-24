@@ -39,6 +39,10 @@
       {
         "label": "Adivinanzas",
         "href": "/ActivityPorfolio/labinnova/games/juego-vocal-ana"
+      },
+      {
+        "label": "Vocales viajeras",
+        "href": "/ActivityPorfolio/labinnova/games/vocales-viajeras"
       }
     ]
   },
@@ -58,5 +62,15 @@
         "href": "/ActivityPorfolio/labinnova/games/memoria"
       }
     ]
-  }
-]
+  },
+  {
+      
+        "label": "Cuestionario",
+        "href": "/ActivityPorfolio/labinnova/games/cuestionario"
+      }
+    ]
+  
+  
+
+  
+
