@@ -1,45 +1,57 @@
+
 {
-    "activityInfo": {
-        "title": "Informe de Resultados de Actividades",
-        "description": "Resumen consolidado de las actividades realizadas, los resultados obtenidos y las evidencias recopiladas durante el desarrollo de la actividad.",
-        "evidence": {
-            "socialCartography": {
-                "title": "Cartografía Social",
-                "description": "Registro visual de la actividad realizada durante la jornada.",
-                "src": "/ActivityPorfolio/images/infografia-fase-3.webp",
-                "alt": "Evidencia fotográfica de la actividad"
-            },
-            "groupCartography": {
-                "title": "Cartografía Grupal",
-                "description": "Socialización de cartografías individuales.",
-                "images": [
-                    {
-                        "src": "/ActivityPorfolio/images/cartografia-fase-3.webp",
-                        "alt": "Cartografías grupales"
-                    },
-                    {
-                        "src": "/ActivityPorfolio/images/cuadro-fase-3.webp",
-                        "alt": "Cuadro de análisis de la cartografía"
-                    }
-                ]
-            },
-            "problematic": {
-                "title": "Análisis general de la problemática",
-                "description": "La cartografía evidencia la importancia de fortalecer los entornos protectores del Colegio Nuestra Señora de Belén, prestando especial atención a las posibles zonas de riesgo identificadas en el territorio y a las condiciones de acompañamiento y seguridad de los niños y las niñas. Por ello, se considera fundamental promover acciones conjuntas entre las familias, la institución educativa y la comunidad para prevenir riesgos, mejorar las condiciones del entorno y favorecer el desarrollo integral de la infancia.",
-                "steps": [
-                    "Azul claro – Familia, comunidad y redes sociales: representa las viviendas, los comercios y los espacios de interacción comunitaria. Se destaca la necesidad de fortalecer la participación familiar y la articulación entre la comunidad y la institución educativa para garantizar el acompañamiento y la protección infantil.",
-                    "Verde – Salud y nutrición: permite reflexionar sobre la importancia de los ambientes saludables, la higiene, la alimentación y el bienestar infantil. Es necesario promover hábitos saludables y verificar las condiciones ambientales que pueden influir en el desarrollo de los niños y las niñas.",
-                    "Naranja – Proceso pedagógico: se relaciona con las prácticas educativas y las dinámicas del entorno. Se resalta la importancia de promover experiencias pedagógicas vinculadas con la convivencia, el reconocimiento del territorio y la prevención de riesgos.",
-                    "Morado – Talento humano: representa el componente relacionado con las personas que participan en los procesos educativos. Se identifica la importancia de fortalecer la comunicación, el trabajo colaborativo y las responsabilidades compartidas en el cuidado de la infancia.",
-                    "Amarillo – Ambientes educativos y protectores: permite analizar los espacios donde los niños y las niñas interactúan y se desarrollan. La presencia de vías y construcciones hace necesario prestar atención a la seguridad, la supervisión adulta y la prevención de posibles riesgos.",
-                    "Rojo – Administrativo y de gestión: se relaciona con la organización y la coordinación institucional. Se destaca la necesidad de fortalecer la identificación, el seguimiento y la atención de situaciones que puedan afectar la seguridad y el bienestar infantil."
-                ]
-            },
-            "video": {
-                "title": "Resumen audiovisual",
-                "description": "Video descriptivo con el desarrollo y los principales momentos de la actividad.",
-                "youtubeUrl": "https://www.youtube.com/embed/y4XeyVejoio?si=Dtg86_WZEQ0aiRbg" 
-            }
-        }
+  "tableData": {
+    "columns": ["Actividad", "Enlace"],
+    "rows": [
+      [
+        "Diario de campo",
+        {
+          "label": "Abrir documento",
+          "href": "https://drive.google.com/drive/folders/1UfbGcpZA0uGEN1KYR7NTFRiWVhBEUM0j?usp=drive_link"     }
+      ]
+    ]
+  },
+  "activityInfo": {
+    "title": "Informe de Resultados de Actividades",
+    "description": "Resumen consolidado de las actividades realizadas, los resultados obtenidos y las evidencias recopiladas durante el desarrollo de la actividad.",
+    "evidence": {
+      "socialCartography": {
+        "title": "Cartografía Social",
+        "description": "Registro visual de la actividad realizada durante la jornada.",
+        "src": "/ActivityPorfolio/images/infografia-fase-3.webp",
+        "alt": "Evidencia fotográfica de la actividad"
+      },
+      "groupCartography": {
+        "title": "Cartografía Grupal",
+        "description": "Socialización de cartografías individuales.",
+        "images": [
+          {
+            "src": "/ActivityPorfolio/images/cartografia-fase-3.webp",
+            "alt": "Cartografías grupales"
+          },
+          {
+            "src": "/ActivityPorfolio/images/cuadro-fase-3.webp",
+            "alt": "Cuadro de análisis de la cartografía"
+          }
+        ]
+      },
+      "problematic": {
+        "title": "Análisis general de la problemática",
+        "description": "La cartografía evidencia la importancia de fortalecer los entornos protectores del Colegio Nuestra Señora de Belén, prestando especial atención a las posibles zonas de riesgo identificadas en el territorio y a las condiciones de acompañamiento y seguridad de los niños y las niñas. Por ello, se considera fundamental promover acciones conjuntas entre las familias, la institución educativa y la comunidad para prevenir riesgos, mejorar las condiciones del entorno y favorecer el desarrollo integral de la infancia.",
+        "steps": [
+          "Azul claro – Familia, comunidad y redes sociales: representa las viviendas, los comercios y los espacios de interacción comunitaria. Se destaca la necesidad de fortalecer la participación familiar y la articulación entre la comunidad y la institución educativa para garantizar el acompañamiento y la protección infantil.",
+          "Verde – Salud y nutrición: permite reflexionar sobre la importancia de los ambientes saludables, la higiene, la alimentación y el bienestar infantil. Es necesario promover hábitos saludables y verificar las condiciones ambientales que pueden influir en el desarrollo de los niños y las niñas.",
+          "Naranja – Proceso pedagógico: se relaciona con las prácticas educativas y las dinámicas del entorno. Se resalta la importancia de promover experiencias pedagógicas vinculadas con la convivencia, el reconocimiento del territorio y la prevención de riesgos.",
+          "Morado – Talento humano: representa el componente relacionado con las personas que participan en los procesos educativos. Se identifica la importancia de fortalecer la comunicación, el trabajo colaborativo y las responsabilidades compartidas en el cuidado de la infancia.",
+          "Amarillo – Ambientes educativos y protectores: permite analizar los espacios donde los niños y las niñas interactúan y se desarrollan. La presencia de vías y construcciones hace necesario prestar atención a la seguridad, la supervisión adulta y la prevención de posibles riesgos.",
+          "Rojo – Administrativo y de gestión: se relaciona con la organización y la coordinación institucional. Se destaca la necesidad de fortalecer la identificación, el seguimiento y la atención de situaciones que puedan afectar la seguridad y el bienestar infantil."
+        ]
+      },
+      "video": {
+        "title": "Resumen audiovisual",
+        "description": "Video descriptivo con el desarrollo y los principales momentos de la actividad.",
+        "youtubeUrl": "https://www.youtube.com/embed/y4XeyVejoio?si=Dtg86_WZEQ0aiRbg"
+      }
     }
+  }
 }
