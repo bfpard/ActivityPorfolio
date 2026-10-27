@@ -2,15 +2,18 @@
 import Layout from "../../../../layouts/Layout.astro";
 import headerNavigation from "../../../../data/json/headerinnova.json";
 import Dashboard from "../../../../components/Dashboard.astro";
-const titulo = "Juego de las vocales";
 ---
 
 <Layout headerNavigation={headerNavigation}>
   <main class="pagina">
-    <!-- Secuencia Didáctica: Las Vocales Saltarinas -->
+    <h1>🌈🔎 ¡En busca de las vocales mágicas!</h1>
+    <p class="descripcion">
+      Supera divertidos retos mientras encuentras las vocales.
+    </p>
+
     <section class="secuencia">
-      <h1 class="titulo">Aprende jugando y saltando</h1>
-      
+      <h1 class="titulo">✨ ¡Supera los retos y descubre las vocales!</h1>
+
       <div class="finalidad">
         <h2>🎯 Actividad</h2>
         <p>
@@ -24,25 +27,25 @@ const titulo = "Juego de las vocales";
         <h2>📖 Paso a paso</h2>
         <ol>
           <li>
-            <strong>Inicio – </strong> La docente reúne a los estudiantes en semicírculo,
+            <strong>🌟 Inicio – </strong> La docente reúne a los estudiantes en semicírculo,
             se realiza una dinamíca llamada "La vocal misteriosa" donde se va a enseñar
             las vocales con una pizarra virtual,se conversan sobre las vocales que
             conocen y las palabras que comienza cada una.
           </li>
           <li>
-            <strong>Exploración – :</strong> La docente presenta el juego interactivo
+            <strong>👀 Exploración – :</strong> La docente presenta el juego interactivo
             "Explora vocales: En busca de las letras mágicas" y los estudiantes participan
             en la actividad, explicando como deben completar los desafios.
           </li>
           <li>
-            <strong>Desarrollo:</strong> Los niños participan en el juego de manera
+            <strong>🎮 Desarrollo:</strong> Los niños participan en el juego de manera
             individual o colaborativa durante la exploración deberán: reconocer as
             vocales,resolver retos de obervación y clasificación superando sus desafios
             la docente acompaña el proceso orientando a los estudiantes cuando sea
             necesario y reforzando los aprendizajes alcanzados.
           </li>
           <li>
-            <strong>Cierre y socialización –:</strong> Los estudiantes comparten cuál fue la vocal que encontraron más fácilmente y cuál les pareció más desafiante.
+            <strong>🎉 Cierre y socialización –:</strong> Los estudiantes comparten cuál fue la vocal que encontraron más fácilmente y cuál les pareció más desafiante.
 Cada niño muestra una tarjeta con su vocal favorita y menciona una palabra relacionada, permitiendo a la docente una retroalimentación sobre el aprendizaje de las vocales.
           </li>
         </ol>
@@ -51,12 +54,11 @@ Cada niño muestra una tarjeta con su vocal favorita y menciona una palabra rela
       <div class="aprendizajes">
         <h2>🌟 Aprendizajes esperados</h2>
         <ul>
-          <li>Identificarán visualmente las vocales en distintos contextos</li>
+          <li>🔤 Identificar visualmente las vocales en distintos contextos.</li>
           <li>
-            Clasificarán las vocales según su forma y sonido.
+            🎨 Clasificar las vocales según su forma y sonido.
           </li>
-          <li></li>
-          <li>Participar respetando turnos y escuchando a los demás.</li>
+          <li>🤝 Participar respetando turnos y escuchando a los demás.</li>
         </ul>
       </div>
     </section>
@@ -98,6 +100,18 @@ Cada niño muestra una tarjeta con su vocal favorita y menciona una palabra rela
     color: #4a148c;
     font-size: 2rem;
     margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    color: #7b4bb7;
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    margin-bottom: 12px;
+  }
+
+  .descripcion {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 28px;
   }
 
   .secuencia h2 {
