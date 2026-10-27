@@ -1,7 +1,6 @@
 ---
 import Layout from "../../../../layouts/Layout.astro";
 import headerNavigation from "../../../../data/json/headerinnova.json";
-const titulo = "Vocales viajeras";
 ---     
 <Layout headerNavigation={headerNavigation}>
     <style>
@@ -22,13 +21,6 @@ const titulo = "Vocales viajeras";
     font-family: "Segoe UI", sans-serif;
     line-height: 1.6;
     text-align: start;
-  }
-
-  .titulo {
-    text-align: center;
-    color: #4a148c;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
   }
 
   .secuencia h2 {
@@ -52,19 +44,32 @@ const titulo = "Vocales viajeras";
     list-style: disc;
     padding-left: 1.2rem;
   }
+
+  h1 {
+    color: #7b4bb7;
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    margin-bottom: 12px;
+  }
+
+  .descripcion {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+  }
 </style>
   <main class="pagina">
-    <!-- Secuencia Didáctica: Las Vocales Saltarinas -->
+    <h1>Vocales viajeras</h1>
+    <p class="descripcion">🌈💬 ¡Comparte historias, descubre vocales!</p>
 
     <section class="secuencia">
-      <h1 class="titulo">Aprende jugando y saltando</h1>
+      <h1 class="titulo">🌈 ¡Un círculo de historias viajeras!</h1>
 
       <div class="finalidad">
         <h2>🎯 Actividad</h2>
         <p>
-          <strong>Explora vocales: En busca de las letras mágicas</strong> a través
-          de retos,exploración y actividades los niños y niñas desarrollan habilidades
-          de identificación, asociación de vocales.
+          A través de un divertido círculo de historias, los niños compartirán
+          sus ideas, expresarán sus gustos y descubrirán las vocales mientras
+          escuchan a sus compañeros y dejan volar su imaginación. 🗣️✨
         </p>
       </div>
 
@@ -72,26 +77,27 @@ const titulo = "Vocales viajeras";
         <h2>📖 Paso a paso</h2>
         <ol>
           <li>
-            <strong>Inicio – </strong> La docente reúne a los estudiantes en semicírculo,
-            se realiza una dinamíca llamada "La vocal misteriosa" donde se va a enseñar
-            las vocales con una pizarra virtual,se conversan sobre las vocales que
-            conocen y las palabras que comienza cada una.
+            <strong>🌟 Inicio – Nos preparamos para compartir</strong>
+            <p>
+              La docente invita a los niños a sentarse en círculo y presenta
+              las vocales A, E, I, O y U. Les pregunta cuál les gusta más y qué
+              palabras recuerdan con cada una.
+            </p>
           </li>
           <li>
-            <strong>Exploración – :</strong> La docente presenta el juego interactivo
-            "Explora vocales: En busca de las letras mágicas" y los estudiantes participan
-            en la actividad, explicando como deben completar los desafios.
+            <strong>🎨 Desarrollo – ¡Mi vocal favorita!</strong>
+            <p>
+              Cada niño elige una vocal, observa su imagen y comparte cuál es su
+              favorita. Puede mencionar una palabra relacionada, contar una
+              pequeña idea o realizar un dibujo para representarla.
+            </p>
           </li>
           <li>
-            <strong>Desarrollo:</strong> Los niños participan en el juego de manera
-            individual o colaborativa durante la exploración deberán: reconocer as
-            vocales,resolver retos de obervación y clasificación superando sus desafios
-            la docente acompaña el proceso orientando a los estudiantes cuando sea
-            necesario y reforzando los aprendizajes alcanzados.
-          </li>
-          <li>
-            <strong>Cierre y socialización –:</strong> Los estudiantes comparten cuál fue la vocal que encontraron más fácilmente y cuál les pareció más desafiante.
-Cada niño muestra una tarjeta con su vocal favorita y menciona una palabra relacionada, permitiendo a la docente una retroalimentación sobre el aprendizaje de las vocales.
+            <strong>💬 Cierre – El círculo de las historias</strong>
+            <p>
+              Los niños escuchan con atención el cuento de las vocales y desarrollan 
+              las actividades propuestas.
+            </p>
           </li>
         </ol>
       </div>
@@ -99,12 +105,18 @@ Cada niño muestra una tarjeta con su vocal favorita y menciona una palabra rela
       <div class="aprendizajes">
         <h2>🌟 Aprendizajes esperados</h2>
         <ul>
-          <li>Identificarán visualmente las vocales en distintos contextos</li>
           <li>
-           Clasificarán las vocales según su forma y sonido.
+            🗣️ <strong>Expresión oral:</strong> Comunicar ideas, gustos y
+            experiencias utilizando palabras sencillas.
           </li>
-          <li>Participarán activamente en experiencias digitales de aprendizaje.</li>
-          <li>Participar respetando turnos y escuchando a los demás.</li>
+          <li>
+            🔤 <strong>Reconocimiento de las vocales:</strong> Identificar las
+            vocales y relacionarlas con palabras e imágenes conocidas.
+          </li>
+          <li>
+            🤝 <strong>Escucha y convivencia:</strong> Respetar los turnos,
+            escuchar a los compañeros y participar con confianza y alegría.
+          </li>
         </ul>
       </div>
     </section>

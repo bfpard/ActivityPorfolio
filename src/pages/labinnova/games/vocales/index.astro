@@ -62,6 +62,18 @@ import Layout from "../../../../layouts/Layout.astro";
       margin-bottom: 0.5rem;
     }
 
+    h1 {
+      color: #7b4bb7;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      margin-bottom: 12px;
+    }
+
+    .descripcion {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+    }
+
     .video-container {
       width: 100%;
       max-width: 800px;
@@ -79,10 +91,15 @@ import Layout from "../../../../layouts/Layout.astro";
       border-radius: 12px;
     }
   </style>
-  <div class="pagina">
+  <main class="pagina">
+    <h1>🌈✨ ¡El mundo mágico de las vocales!</h1>
+    <p class="descripcion">
+      ¡A, E, I, O, U… aprender es divertido! 🎶
+    </p>
+
     <!-- Secuencia Didáctica: Las Vocales Saltarinas -->
     <section class="secuencia">
-      <h1 class="titulo">Aprende jugando y saltando</h1>
+      <h1 class="titulo">🎯 ¡Aprende jugando y saltando...!</h1>
 
       <div class="finalidad">
         <h2>🎯 Actividad</h2>
@@ -98,21 +115,21 @@ import Layout from "../../../../layouts/Layout.astro";
         <h2>📖 Paso a paso</h2>
         <ol>
           <li>
-            <strong>Inicio – </strong> La docente reúne al grupo en círculo o semicírculo,
+            <strong>🌟 Inicio – </strong> La docente reúne al grupo en círculo o semicírculo,
             lee para el grupo un cuento de las vocales y hace pausas para preguntas
             y comentarios.
           </li>
           <li>
-            <strong>Exploración – :</strong> Los niños observan el video de apoyo
+            <strong>👀 Exploración – :</strong> Los niños observan el video de apoyo
             del "Monosilabo".
           </li>
           <li>
-            <strong>Creación Plastilina – :</strong> Forman las vocales con plastilina
+            <strong>🎨 Creación Plastilina – :</strong> Forman las vocales con plastilina
             de colores y muestran sus creaciones al grupo.
           </li>
           <li>
-            <strong>Interacción digital Juego en plataforma –:</strong> Realizan actividades
-            en computador siguiendo el juego de las vocales para realizar una revia
+            <strong>🎮 Interacción digital Juego en plataforma –:</strong> Realizan actividades
+            en computador siguiendo el juego de las vocales para realizar una previa
             evaluación de saberes.
           </li>
         </ol>
@@ -121,11 +138,11 @@ import Layout from "../../../../layouts/Layout.astro";
       <div class="aprendizajes">
         <h2>🌟 Aprendizajes esperados</h2>
         <ul>
-          <li>Comprender información sencilla de la historia.</li>
+          <li>🧠 Comprender información sencilla de la historia.</li>
           <li>
-            Identificar visualmente una vocal y relacionarla con su sonido.
+            🎮 Identificar visualmente una vocal y relacionarla con su sonido.
           </li>
-          <li>Participar respetando turnos y escuchando a los demás.</li>
+          <li>🤝 Participar respetando turnos y escuchando a los demás.</li>
         </ul>
       </div>
     </section>
@@ -141,5 +158,5 @@ import Layout from "../../../../layouts/Layout.astro";
     </section>
 
     <VocalGame />
-  </div>
+  </main>
 </Layout>

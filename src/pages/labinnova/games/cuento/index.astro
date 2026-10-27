@@ -1,0 +1,210 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+import headerNavigation from "../../../../data/json/headerinnova.json";
+
+const tableData = {
+  columns: ["Actividad", "Enlace"],
+  rows: [
+    [
+      "Cuento: Las aventuras de las vocales viajeras",
+      {
+        label: "Abrir cuento",
+        href: "https://cuenti.to/story/las-aventuras-de-las-vocales-viajeras/3a5e32fe-e0bc-4f9a-9725-eafdbb01c5f6?utm_source=share&utm_medium=link&sref=e07a5310",
+      },
+    ],
+  ],
+};
+---
+
+<Layout headerNavigation={headerNavigation}>
+  <main class="pagina">
+    <h1>🌈📚 ¡Un viaje mágico por el mundo de las vocales!</h1>
+    <p class="descripcion">
+      ¡Prepárate para una aventura llena de letras y fantasía! ✨
+    </p>
+
+    <section class="secuencia">
+      <h1 class="titulo">🚀 ¡Despega hacia Alfabetolandia!</h1>
+
+      <div class="finalidad">
+        <h2>🎯 Actividad</h2>
+        <p>
+          A través del cuento <em>Las Aventuras de las Vocales Viajeras</em>, los
+          niños descubrirán cómo las vocales se unen con otras letras para formar
+          sílabas y palabras, fortaleciendo su lenguaje, imaginación y gusto por
+          la lectura.
+        </p>
+      </div>
+
+      <div class="pasos">
+        <h2>📖 Paso a paso</h2>
+        <ol>
+          <li>
+            <strong>🌟 Inicio – ¡Despegamos hacia Alfabetolandia!</strong>
+            <p>
+              La docente invita a los niños a reunirse en un espacio cómodo y
+              presenta las vocales A, E, I, O y U mediante tarjetas coloridas.
+              Les pregunta si las reconocen y qué palabras conocen que comiencen
+              con ellas, despertando su curiosidad antes de iniciar el cuento.
+            </p>
+          </li>
+          <li>
+            <strong>📖 Desarrollo – Descubrimos las aventuras</strong>
+            <p>
+              La docente narra o presenta el cuento
+              <em>Las Aventuras de las Vocales Viajeras</em>, haciendo pausas para
+              que los niños observen las ilustraciones, identifiquen las vocales y
+              respondan preguntas sencillas sobre los lugares que visitan y los
+              personajes que encuentran.
+            </p>
+          </li>
+          <li>
+            <strong>🎨 Exploración – ¡Creamos con las vocales!</strong>
+            <p>
+              Después de escuchar la historia, los niños eligen su vocal favorita
+              y la representan con dibujos, plastilina o tarjetas. Con ayuda de la
+              docente, buscan palabras que comiencen con esa vocal y exploran cómo
+              se pueden combinar las letras para formar sílabas sencillas.
+            </p>
+          </li>
+          <li>
+            <strong>🎉 Cierre – Compartimos nuestro descubrimiento</strong>
+            <p>
+              Cada niño muestra su creación y menciona la vocal elegida junto con
+              una palabra relacionada. La docente invita al grupo a recordar los
+              momentos favoritos del cuento y refuerza los aprendizajes mediante
+              preguntas y felicitaciones.
+            </p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="aprendizajes">
+        <h2>🌟 Aprendizajes esperados</h2>
+        <ul>
+          <li>
+            🔤 <strong>Reconocimiento de las vocales:</strong> Identificar las
+            vocales A, E, I, O y U y relacionarlas con palabras conocidas.
+          </li>
+          <li>
+            🗣️ <strong>Desarrollo del lenguaje:</strong> Explorar la relación
+            entre vocales, consonantes, sílabas y palabras sencillas.
+          </li>
+          <li>
+            💖 <strong>Comprensión y creatividad:</strong> Escuchar una historia,
+            expresar ideas sobre ella y participar en actividades artísticas
+            relacionadas con el cuento.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-12 overflow-x-auto rounded-xl border border-gray-100 bg-white shadow-sm">
+      <div class="min-w-[700px]">
+        <table class="w-full border-collapse text-left">
+          <thead>
+            <tr class="bg-[#F0F3FB]">
+              {tableData.columns.map((column) => (
+                <th
+                  scope="col"
+                  class="px-5 py-4 text-xs font-semibold uppercase tracking-wide text-[#27456F]"
+                >
+                  {column}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {tableData.rows.map((row) => (
+              <tr class="transition-colors hover:bg-gray-50">
+                {row.map((cell) => (
+                  <td class="px-5 py-4 text-sm text-gray-700">
+                    {typeof cell === "string" ? (
+                      cell
+                    ) : (
+                      <a
+                        href={cell.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-900"
+                      >
+                        {cell.label}
+                      </a>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <style>
+    .pagina {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .titulo {
+      text-align: center;
+      color: #4a148c;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .secuencia {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fdfdfd;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-family: "Segoe UI", sans-serif;
+      line-height: 1.6;
+      text-align: start;
+    }
+
+    .secuencia h2 {
+      color: #00695c;
+      margin-top: 1.5rem;
+    }
+
+    .secuencia p {
+      margin-bottom: 1rem;
+    }
+
+    .secuencia ol {
+      padding-left: 1.2rem;
+    }
+
+    .secuencia li {
+      margin-bottom: 0.8rem;
+    }
+
+    .secuencia ul {
+      list-style: disc;
+      padding-left: 1.2rem;
+    }
+
+    .aprendizajes li {
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      color: #7b4bb7;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      margin-bottom: 12px;
+    }
+
+    .descripcion {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+    }
+
+  </style>
+</Layout>
